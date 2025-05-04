@@ -10,7 +10,7 @@ A production-ready suite of modular, asynchronous tools for analyzing, refactori
 ## 📁 Project Structure
 
 ```
-consolidated_sql_tools/
+sql_tools/
 ├── app.py                      # CLI interface and controller
 ├── requirements.txt
 ├── README.md

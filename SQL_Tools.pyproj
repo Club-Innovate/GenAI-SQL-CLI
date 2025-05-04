@@ -25,6 +25,7 @@
   <ItemGroup>
     <Compile Include="app.py" />
     <Compile Include="core\base_ai_client.py" />
+    <Content Include="CLI_Usage_Guide.md" />
     <Content Include="core\config_loader.py" />
     <Compile Include="core\logger.py" />
     <Compile Include="core\sql_task_base.py" />
@@ -39,11 +40,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="LICENSE" />
+    <Content Include="logs\sql_analyzer.log" />
     <Content Include="README.md" />
     <Content Include="sql_commenter.log" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="core\" />
+    <Folder Include="logs\" />
     <Folder Include="utils\" />
     <Folder Include="tasks\" />
   </ItemGroup>
