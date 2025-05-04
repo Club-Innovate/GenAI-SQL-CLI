@@ -122,6 +122,6 @@ This project is licensed under the [MIT License](./LICENSE).
 
 ## 🙌 Authors & Acknowledgments
 
-- Vision and engineering by [You]
+- Vision and engineering by Hans Esquivel
 - Powered by Azure OpenAI
 - Special thanks to the SQL and ML community for best practices
