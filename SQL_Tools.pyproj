@@ -34,6 +34,7 @@
     <Compile Include="tasks\sql_security_auditor.py" />
     <Compile Include="tasks\sql_test_generator.py" />
     <Compile Include="utils\file_utils.py" />
+    <Compile Include="utils\prompt_manager.py" />
     <Compile Include="utils\sanitizer.py" />
     <Compile Include="tasks\sql_analyzer.py" />
     <Compile Include="tasks\sql_commenter.py" />
@@ -41,12 +42,14 @@
   <ItemGroup>
     <Content Include="LICENSE" />
     <Content Include="logs\sql_analyzer.log" />
+    <Content Include="prompts\index.yaml" />
     <Content Include="README.md" />
     <Content Include="sql_commenter.log" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="core\" />
     <Folder Include="logs\" />
+    <Folder Include="prompts\" />
     <Folder Include="utils\" />
     <Folder Include="tasks\" />
   </ItemGroup>

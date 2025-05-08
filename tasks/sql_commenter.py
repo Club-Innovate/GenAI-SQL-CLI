@@ -1,4 +1,3 @@
-
 """
 SQL Commenter Tool (Async + Modular)
 
@@ -10,7 +9,7 @@ from core.sql_task_base import SQLTask
 from core.logger import get_logger
 from datetime import datetime
 import getpass
-import re
+from utils.prompt_manager import PromptManager
 from utils.sanitizer import clean_output
 
 class SQLCommenter(SQLTask):
@@ -31,27 +30,21 @@ class SQLCommenter(SQLTask):
         try:
             self.logger.info("Generating SQL comments...")
 
-            prompt = f"""
-You are a T-SQL expert. Given the SQL code below, please:
-1. Prepend a comment header block with:
-   -- =============================================
-   -- Author:      {self.user}
-   -- Create date: {self.timestamp}
-   -- Description: <Provide a detailed overview of this query>
-   -- =============================================
+            # Use PromptManager to load the prompt
+            prompt = PromptManager.load_prompt(
+                "commenter.add_comments",
+                sql_query=sql_query,
+                user=self.user,
+                timestamp=self.timestamp
+            )
 
-2. Add or improve inline comments throughout the query.
-3. Only return the updated SQL code with no markdown formatting.
-
-SQL Code:
-{sql_query}
-"""
+            # Send the prompt to the AI model
             result = await self.client.get_completion(prompt, temperature=0.2)
             cleaned = self._sanitize_output(result)
 
             self.logger.info("SQL commenting completed.")
 
-            return clean_output(result)
+            return clean_output(cleaned)
 
         except Exception as e:
             self.logger.error(f"SQL commenting failed: {e}")
@@ -64,8 +57,5 @@ SQL Code:
         :param output: Raw LLM output
         :return: Cleaned SQL string
         """
-        output = re.sub(r"(?i)```(?:sql)?\s*", "", output.strip())
-        output = re.sub(r"(?i)\s*```", "", output.strip())
-        output = re.sub(r"(?i)### Explanation:.*", "", output.strip(), flags=re.DOTALL)
+        return clean_output(output.strip())
 
-        return output.strip()

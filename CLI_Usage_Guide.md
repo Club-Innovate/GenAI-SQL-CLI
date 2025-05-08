@@ -55,7 +55,24 @@ python app.py --task=audit --path=query.sql --git
   - PHI/PII exposure
   - Dynamic SQL misuse
   - HIPAA/HITECH flags
-- **`--git`**: Automatically stages the updated file with `git add` for version control.
+- **`--git`**: Automatically stages the updated file with `git add`, making it ready for commit in version control.
+
+---
+
+## 🗣️ Explain Query Logic in Natural Language
+
+
+### 🔍 What It Does:
+- **Task**: `explain` — translates the logic of `query.sql` into a natural language explanation, making it easier to understand complex queries.
+
+---
+
+## 🧪 Generate Unit Test Ideas for SQL Logic
+
+
+### 🔍 What It Does:
+- **Task**: `test` — analyzes `query.sql` and generates unit test ideas to validate its logic.
+- **`--output=...`**: Saves the generated test ideas to `test_ideas.txt`.
 
 ---
 
@@ -71,6 +88,8 @@ python app.py --task=comment --path=query.sql --sanitize --output=query_commente
 - Saves to a new file
 - Backs up the original
 - Stages the result for Git commit
+- **Note**: Not all tasks can be combined. For example, `audit` and `explain` cannot be used together as they serve different purposes.
+
 
 ---
 

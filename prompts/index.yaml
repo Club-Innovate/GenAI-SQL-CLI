@@ -1,0 +1,96 @@
+
+# Summarization Prompts
+summarization.short_intro:
+  inline: "Summarize this into one sentence: {content}"
+  used_by: tasks.sql_explainer.SQLExplainer
+  inputs: [content]
+  version: 1.0
+  description: Short one-sentence summarization.
+
+# SQL Test Generator Prompts
+test_generator.unit_tests:
+  inline: |
+    "Given the SQL query below, generate relevant unit tests or test scenarios. 
+    For each scenario, describe input data requirements and expected output or behavior. 
+    Include edge cases, null handling, empty results, and permission boundaries.\n\n{sql_query}"
+  used_by: tasks.sql_test_generator.SQLTestGenerator
+  inputs: [sql_query]
+  version: 1.0
+  description: Generate unit tests for SQL queries.
+
+# SQL Analyzer Prompts
+analyzer.performance_analysis:
+  inline: |
+    "Analyze the following SQL query for potential performance improvements. 
+    Identify anti-patterns, missing indexes, excessive joins, and suggest refactoring. 
+    Use SQL best practices. Avoid SELECT * if found. Recommend using CTEs or window functions if relevant.\n\n{sql_query}"
+  used_by: tasks.sql_analyzer.SQLAnalyzer
+  inputs: [sql_query]
+  version: 1.0
+  description: Analyze SQL queries for performance improvements.
+
+# SQL Commenter Prompts
+commenter.add_comments:
+  inline: |
+    "You are a T-SQL expert. Given the SQL code below, please:
+    1. Prepend a comment header block with:
+       -- =============================================
+       -- Author:      {user}
+       -- Create date: {timestamp}
+       -- Description: <Provide a detailed overview of this query>
+       -- =============================================
+
+    2. Add or improve inline comments throughout the query.
+    3. Only return the updated SQL code with no markdown formatting.
+
+    SQL Code:
+    {sql_query}"
+  used_by: tasks.sql_commenter.SQLCommenter
+  inputs: [sql_query, user, timestamp]
+  version: 1.0
+  description: Add comments and metadata headers to SQL queries.
+
+# SQL Explainer Prompts
+explainer.step_by_step:
+  inline: |
+    "Explain the following SQL query step-by-step in simple, human-readable language. 
+    Cover what each clause (SELECT, WHERE, JOIN, etc.) is doing. 
+    If there are subqueries, CTEs, or window functions, explain those as well. 
+    Only return the explanation in plain text.\n\n{sql_query}"
+  used_by: tasks.sql_explainer.SQLExplainer
+  inputs: [sql_query]
+  version: 1.0
+  description: Provide a step-by-step explanation of SQL queries.
+
+# SQL Refactorer Prompts
+refactorer.improve_modularity:
+  inline: |
+    "Refactor the following SQL query to improve modularity, readability, and maintainability. 
+    Use Common Table Expressions (CTEs), views, and clean formatting. 
+    Avoid using SELECT * and suggest clear aliases. 
+    Only return the cleaned, refactored SQL without markdown formatting.\n\n{sql_query}"
+  used_by: tasks.sql_refactorer.SQLRefactorer
+  inputs: [sql_query]
+  version: 1.0
+  description: Refactor SQL queries for better readability and maintainability.
+
+# SQL Security Auditor Prompts
+auditor.security_audit:
+  inline: |
+    "Perform a security audit on the following SQL query. 
+
+    Identify any of the following:
+    - SQL Injection vulnerabilities
+    - Improper data exposure (especially PHI/PII)
+    - Absence of access controls
+    - Unsafe use of dynamic SQL
+    - HIPAA or HITECH compliance risks
+
+    Provide a list of findings with recommendations.
+
+    SQL Code:
+    {sql_query}"
+  used_by: tasks.sql_security_auditor.SQLSecurityAuditor
+  inputs: [sql_query]
+  version: 1.0
+  description: Audit SQL queries for security vulnerabilities and compliance risks.

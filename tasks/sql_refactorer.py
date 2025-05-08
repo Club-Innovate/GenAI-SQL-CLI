@@ -1,4 +1,3 @@
-
 """
 SQL Refactorer Tool (Async + Modular)
 
@@ -8,6 +7,7 @@ Refactors complex SQL queries into more modular, maintainable components using C
 from core.base_ai_client import BaseAIClient
 from core.sql_task_base import SQLTask
 from core.logger import get_logger
+from utils.prompt_manager import PromptManager
 from utils.sanitizer import clean_output
 
 class SQLRefactorer(SQLTask):
@@ -22,16 +22,16 @@ class SQLRefactorer(SQLTask):
         :param sql_query: SQL query string
         :return: Refactored SQL query
         """
-
         try:
             self.logger.info("Refactoring SQL query...")
-            prompt = (
-                "Refactor the following SQL query to improve modularity, readability, and maintainability. "
-                "Use Common Table Expressions (CTEs), views, and clean formatting. "
-                "Avoid using SELECT * and suggest clear aliases. "
-                "Only return the cleaned, refactored SQL without markdown formatting.\n\n"
-                f"{sql_query}"
+
+            # Use PromptManager to load the prompt
+            prompt = PromptManager.load_prompt(
+                "refactorer.improve_modularity",
+                sql_query=sql_query
             )
+
+            # Send the prompt to the AI model
             result = await self.client.get_completion(prompt, temperature=0.25)
             self.logger.info("SQL refactoring completed.")
 

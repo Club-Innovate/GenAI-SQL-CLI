@@ -1,4 +1,3 @@
-
 """
 SQL Explainer Tool (Async + Modular)
 
@@ -8,6 +7,7 @@ Provides a step-by-step explanation of SQL queries for educational and onboardin
 from core.base_ai_client import BaseAIClient
 from core.sql_task_base import SQLTask
 from core.logger import get_logger
+from utils.prompt_manager import PromptManager
 from utils.sanitizer import clean_output
 
 class SQLExplainer(SQLTask):
@@ -22,16 +22,16 @@ class SQLExplainer(SQLTask):
         :param sql_query: SQL query string
         :return: Natural language explanation of the SQL logic
         """
-
         try:
             self.logger.info("Explaining SQL query...")
-            prompt = (
-                "Explain the following SQL query step-by-step in simple, human-readable language. "
-                "Cover what each clause (SELECT, WHERE, JOIN, etc.) is doing. "
-                "If there are subqueries, CTEs, or window functions, explain those as well. "
-                "Only return the explanation in plain text.\n\n"
-                f"{sql_query}"
+
+            # Use PromptManager to load the prompt
+            prompt = PromptManager.load_prompt(
+                "explainer.step_by_step",
+                sql_query=sql_query
             )
+
+            # Send the prompt to the AI model
             result = await self.client.get_completion(prompt, temperature=0.3)
             self.logger.info("SQL explanation generated successfully.")
 

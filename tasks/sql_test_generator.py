@@ -1,4 +1,3 @@
-
 """
 SQL Test Generator Tool (Async + Modular)
 
@@ -8,6 +7,7 @@ Generates test cases and scenarios for SQL queries to validate correctness and l
 from core.base_ai_client import BaseAIClient
 from core.sql_task_base import SQLTask
 from core.logger import get_logger
+from utils.prompt_manager import PromptManager
 from utils.sanitizer import clean_output
 
 class SQLTestGenerator(SQLTask):
@@ -24,12 +24,14 @@ class SQLTestGenerator(SQLTask):
         """
         try:
             self.logger.info("Generating SQL test cases...")
-            prompt = (
-                "Given the SQL query below, generate relevant unit tests or test scenarios. "
-                "For each scenario, describe input data requirements and expected output or behavior. "
-                "Include edge cases, null handling, empty results, and permission boundaries.\n\n"
-                f"{sql_query}"
+
+            # Use PromptManager to load the prompt
+            prompt = PromptManager.load_prompt(
+                "test_generator.unit_tests",
+                sql_query=sql_query
             )
+
+            # Send the prompt to the AI model
             result = await self.client.get_completion(prompt, temperature=0.3)
             self.logger.info("SQL test generation completed.")
 
