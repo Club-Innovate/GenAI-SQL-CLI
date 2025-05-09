@@ -30,6 +30,7 @@
     <Compile Include="core\logger.py" />
     <Compile Include="core\sql_task_base.py" />
     <Compile Include="tasks\sql_explainer.py" />
+    <Compile Include="tasks\sql_performance_benchmark.py" />
     <Compile Include="tasks\sql_refactorer.py" />
     <Compile Include="tasks\sql_security_auditor.py" />
     <Compile Include="tasks\sql_test_generator.py" />

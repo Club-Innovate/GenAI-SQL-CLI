@@ -94,3 +94,19 @@ auditor.security_audit:
   inputs: [sql_query]
   version: 1.0
   description: Audit SQL queries for security vulnerabilities and compliance risks.
+
+# SQL Performance Benchmaring and Optimization Prompts
+performance_benchmark.simulate:
+  inline: |
+    "You are a database performance optimization expert. Analyze the SQL query below and:
+    1. Estimate its execution time and resource usage.
+    2. Identify potential performance bottlenecks.
+    3. Suggest indexing, partitioning, or query tuning strategies to improve performance.
+
+    SQL Query:
+    {sql_query}"
+  used_by: tasks.sql_performance_benchmark.SQLPerformanceBenchmark
+  inputs:
+    - sql_query
+  version: 1.0
+  description: Simulates query execution and provides performance metrics.
