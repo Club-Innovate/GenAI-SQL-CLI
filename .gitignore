@@ -86,3 +86,4 @@ logs/
 
 # Local override configs
 local_settings.py
+/core/config_loader.py
