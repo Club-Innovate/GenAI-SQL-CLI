@@ -29,6 +29,7 @@ from tasks.sql_refactorer import SQLRefactorer
 from tasks.sql_explainer import SQLExplainer
 from tasks.sql_security_auditor import SQLSecurityAuditor
 from tasks.sql_test_generator import SQLTestGenerator
+from tasks.sql_performance_benchmark import SQLPerformanceBenchmark
 
 # Task registry
 TASKS = {
@@ -38,6 +39,7 @@ TASKS = {
     "explain": SQLExplainer,
     "audit": SQLSecurityAuditor,
     "test": SQLTestGenerator,
+    "benchmark": SQLPerformanceBenchmark,
 }
 
 async def process_sql_file(filepath, task_class, backup=False, dry_run=False, sanitize=False, output_path=None, git=False):
