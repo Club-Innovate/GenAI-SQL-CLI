@@ -87,3 +87,7 @@ logs/
 # Local override configs
 local_settings.py
 /core/config_loader.py
+/GenAI SQL Doc.docx
+/club_innovate.png
+/schema/HealthClaimsDW.json
+/~$nAI SQL Doc.docx
