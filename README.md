@@ -57,12 +57,11 @@ sql_tools/
 - 🔐 Backup and HIPAA-safe logging
 - 🔀 Git integration: auto-stage files with `--git`
 - 📤 Export to separate files using `--output`
-- 🌐 Support for multiple SQL dialects (e.g., T-SQL, PostgreSQL, Oracle)
+- 🌐 Support for multiple SQL dialects using nl_to_sql task (e.g., T-SQL, PostgreSQL, Oracle)
 - 🚀 Natural Language to SQL Conversion
 - 🔐 Enhanced security audits with SQL injection and role misuse detection
 - 📊 Performance benchmarking and optimization
 - 🔧 Data masking and anonymization
-- 📈 Visualization and insights (e.g., query execution plans, schema diagrams)
 - 🎨 SQL Style Guide Enforcement
 - 🛠 Dynamic SQL Detection
 - 🧑‍🏫 SQL Education Mode (Interactive Tutorials)
