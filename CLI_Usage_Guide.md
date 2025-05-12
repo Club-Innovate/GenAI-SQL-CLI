@@ -146,6 +146,23 @@ python app.py --task=comment --path=query.sql --sanitize --output=query_commente
 
 ---
 
+## 🔒 Mask Sensitive Data in SQL Queries
+
+```bash
+python app.py --task=mask --path=example.sql --output=masked_example.sql
+```
+
+### 🔍 What It Does:
+- **Task**: `mask` — Automatically identifies and masks sensitive data such as:
+  - Email addresses.
+  - Phone numbers.
+  - Credit card numbers.
+  - Social Security Numbers (SSNs).
+- **`--output=...`**: Writes the masked SQL to a new file.
+- **`--dry-run`**: Prints the masked SQL in the terminal without modifying the input file.
+
+---
+
 ## 🔧 Available Tasks
 
 | Task       | Description                                  |
@@ -159,6 +176,7 @@ python app.py --task=comment --path=query.sql --sanitize --output=query_commente
 | `benchmark`| Simulate query execution and measure performance|
 | `visualize`| Generate query execution plan visualizations |
 | `nl_to_sql`| Convert natural language to SQL              |
+| `mask`     | Mask sensitive data in SQL queries           |
 
 ---
 

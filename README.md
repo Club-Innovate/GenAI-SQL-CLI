@@ -22,6 +22,7 @@ sql_tools/
 ├── tasks/                      # Modular GenAI SQL task classes
 │   ├── sql_analyzer.py
 │   ├── sql_commenter.py
+│   ├── sql_data_masker.py
 │   ├── sql_refactorer.py
 │   ├── sql_explainer.py
 │   ├── sql_security_auditor.py
@@ -47,6 +48,7 @@ sql_tools/
 
 ## ✅ Features
 
+- 🧹 Data Masking and Anonymization - Automatically masks sensitive data such as emails, phone numbers, credit card numbers, and SSNs.
 - ⚙️ Modular task engine (comment, analyze, refactor, audit, explain, test)
 - 🔍 Query Simulation and Validation
 - 📋 Centralized prompt management via `prompts/index.yaml`
@@ -69,6 +71,20 @@ sql_tools/
 ---
 
 ## 🧪 CLI Usage
+
+## 🔒 Mask Sensitive Data in SQL Queries
+
+```bash
+python app.py --task=mask --path=example.sql --output=masked_example.sql
+```
+
+### 🔍 What It Does:
+- **Task**: `mask` — Automatically identifies and masks sensitive data such as:
+  - Email addresses.
+  - Phone numbers.
+  - Credit card numbers.
+  - Social Security Numbers (SSNs).
+- **`--output=...`**: Writes the masked SQL to a new file.
 
 ### 🔧 Comment a SQL file
 ```bash

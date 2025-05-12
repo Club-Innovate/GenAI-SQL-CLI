@@ -32,6 +32,7 @@ from tasks.sql_test_generator import SQLTestGenerator
 from tasks.sql_performance_benchmark import SQLPerformanceBenchmark
 from tasks.sql_query_validator import SQLQueryValidator
 from tasks.natural_language_to_sql import NaturalLanguageToSQL
+from tasks.sql_data_masker import SQLDataMasker  # Import for Data Masking and Anonymization
 
 # Add the project root directory to the Python path
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "."))
@@ -48,6 +49,7 @@ TASKS = {
     "benchmark": SQLPerformanceBenchmark,
     "validate": SQLQueryValidator,
     "nl_to_sql": NaturalLanguageToSQL,
+    "mask": SQLDataMasker,  # Added entry for the new Data Masking feature
 }
 
 
@@ -55,8 +57,12 @@ async def process_sql_file(filepath, task_class, backup=False, dry_run=False, sa
     print(f"🔍 Processing: {filepath}")
     sql_code = read_sql_file(filepath)
 
-    # Handle specific logic for NaturalLanguageToSQL
-    if task_class == NaturalLanguageToSQL:
+    # Special logic for SQLDataMasker
+    if task_class == SQLDataMasker:
+        task = task_class()
+        result = task.mask_sensitive_data(sql_code)
+    elif task_class == NaturalLanguageToSQL:
+        # Handle specific logic for NaturalLanguageToSQL
         nl_query = sql_code  # Treat the file content as the natural language query
         schema_path = kwargs.get("schema_path", "schema.json")
         sql_dialect = kwargs.get("sql_dialect", "generic")

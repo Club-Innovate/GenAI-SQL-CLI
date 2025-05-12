@@ -32,6 +32,7 @@
     <Compile Include="core\logger.py" />
     <Compile Include="core\sql_task_base.py" />
     <Compile Include="tasks\natural_language_to_sql.py" />
+    <Compile Include="tasks\sql_data_masker.py" />
     <Compile Include="tasks\sql_explainer.py" />
     <Compile Include="tasks\sql_performance_benchmark.py" />
     <Compile Include="tasks\sql_query_simulator_validator.py" />
@@ -40,6 +41,7 @@
     <Compile Include="tasks\sql_security_auditor.py" />
     <Compile Include="tasks\sql_test_generator.py" />
     <Compile Include="tests\test_natural_language_to_sql.py" />
+    <Compile Include="tests\test_sql_data_masker.py" />
     <Compile Include="tests\test_sql_performance_benchmark.py" />
     <Compile Include="tests\test_sql_query_validator.py" />
     <Compile Include="tests\test_sql_security_auditor.py" />
