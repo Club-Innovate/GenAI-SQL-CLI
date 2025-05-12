@@ -110,3 +110,54 @@ performance_benchmark.simulate:
     - sql_query
   version: 1.0
   description: Simulates query execution and provides performance metrics.
+
+# SQL Query Validator Prompts
+query_validator.simulate_and_validate:
+  inline: |
+    "You are a database expert. Simulate the execution of the SQL query below and:
+    1. Identify syntax errors and suggest corrections if any.
+    2. Validate the logical correctness of the query (e.g., ambiguous joins, unused clauses).
+    3. Provide feedback on potential risks (e.g., missing WHERE conditions for updates or deletions).
+
+    SQL Query:
+    {sql_query}"
+  used_by: tasks.sql_query_validator.SQLQueryValidator
+  inputs: [sql_query]
+  version: 1.0
+  description: Simulates and validates SQL queries for syntax and logical correctness.
+
+# Enhanced Security Audit Prompts
+security_audit.enhanced:
+  inline: |
+    "You are a database security expert. Perform a comprehensive security audit on the SQL query below. Specifically:
+    1. Detect common vulnerabilities, including:
+       - SQL Injection risks.
+       - Unsafe use of dynamic SQL.
+       - Improper data exposure (e.g., PHI/PII like SSNs, passwords).
+       - Absence of access controls.
+    2. Identify any HIPAA or HITECH compliance risks.
+    3. Classify detected vulnerabilities by severity (Critical, High, Medium, Low).
+    4. Provide actionable recommendations to address identified issues.
+
+    SQL Query:
+    {sql_query}"
+  used_by: tasks.sql_security_auditor.EnhancedSQLSecurityAuditor
+  inputs: [sql_query]
+  version: 1.0
+  description: Audits SQL queries for security vulnerabilities, compliance risks, and provides remediation steps.
+
+# Natural Language to SQL Conversion Prompts
+nl_to_sql.convert:
+  inline: |
+    "You are an expert database administrator. Convert the following natural language query into a valid SQL query:
+    - SQL Dialect: {sql_dialect}
+    - Schema: {schema}
+
+    Natural Language Query:
+    {nl_query}
+
+    Provide the SQL query as output."
+  used_by: tasks.natural_language_to_sql.NaturalLanguageToSQL
+  inputs: [nl_query, sql_dialect, schema]
+  version: 1.2
+  description: Converts natural language queries to SQL queries using a predefined schema JSON.

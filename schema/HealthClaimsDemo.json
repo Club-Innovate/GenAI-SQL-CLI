@@ -1,0 +1,98 @@
+{
+  "Schema": [
+    {
+      "TableName": "Claims",
+      "Columns": [
+        { "ColumnName": "ClaimDate" },
+        { "ColumnName": "ClaimID" },
+        { "ColumnName": "ClaimTypeID" },
+        { "ColumnName": "DiagnosisCode" },
+        { "ColumnName": "PaidAmount" },
+        { "ColumnName": "PatientID" },
+        { "ColumnName": "ProcedureCode" },
+        { "ColumnName": "ProviderID" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "Claims",
+          "ForeignKeyColumn": "ClaimTypeID",
+          "PrimaryTable": "ClaimTypes",
+          "PrimaryKeyColumn": "ClaimTypeID"
+        },
+        {
+          "RelatedTable": "Claims",
+          "ForeignKeyColumn": "DiagnosisCode",
+          "PrimaryTable": "DiagnosisCodes",
+          "PrimaryKeyColumn": "DiagnosisCode"
+        },
+        {
+          "RelatedTable": "Claims",
+          "ForeignKeyColumn": "PatientID",
+          "PrimaryTable": "Patients",
+          "PrimaryKeyColumn": "PatientID"
+        },
+        {
+          "RelatedTable": "Claims",
+          "ForeignKeyColumn": "ProcedureCode",
+          "PrimaryTable": "ProcedureCodes",
+          "PrimaryKeyColumn": "ProcedureCode"
+        },
+        {
+          "RelatedTable": "Claims",
+          "ForeignKeyColumn": "ProviderID",
+          "PrimaryTable": "Providers",
+          "PrimaryKeyColumn": "ProviderID"
+        }
+      ]
+    },
+    {
+      "TableName": "ClaimTypes",
+      "Columns": [
+        { "ColumnName": "ClaimTypeID" },
+        { "ColumnName": "ClaimTypeName" }
+      ]
+    },
+    {
+      "TableName": "DiagnosisCodes",
+      "Columns": [
+        { "ColumnName": "Description" },
+        { "ColumnName": "DiagnosisCode" }
+      ]
+    },
+    {
+      "TableName": "Patients",
+      "Columns": [
+        { "ColumnName": "DateOfBirth" },
+        { "ColumnName": "FirstName" },
+        { "ColumnName": "Gender" },
+        { "ColumnName": "LastName" },
+        { "ColumnName": "PatientID" }
+      ]
+    },
+    {
+      "TableName": "ProcedureCodes",
+      "Columns": [
+        { "ColumnName": "Description" },
+        { "ColumnName": "ProcedureCode" }
+      ]
+    },
+    {
+      "TableName": "Providers",
+      "Columns": [
+        { "ColumnName": "ProviderID" },
+        { "ColumnName": "ProviderName" },
+        { "ColumnName": "Specialty" }
+      ]
+    },
+    {
+      "TableName": "sysdiagrams",
+      "Columns": [
+        { "ColumnName": "definition" },
+        { "ColumnName": "diagram_id" },
+        { "ColumnName": "name" },
+        { "ColumnName": "principal_id" },
+        { "ColumnName": "version" }
+      ]
+    }
+  ]
+}

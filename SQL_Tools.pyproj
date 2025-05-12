@@ -13,6 +13,7 @@
     <Name>SQL_Tools</Name>
     <RootNamespace>SQLCommenter</RootNamespace>
     <SuppressEnvironmentCreationPrompt>True</SuppressEnvironmentCreationPrompt>
+    <TestFramework>Pytest</TestFramework>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -25,32 +26,48 @@
   <ItemGroup>
     <Compile Include="app.py" />
     <Compile Include="core\base_ai_client.py" />
+    <Content Include="cli\sample_cli_commands.md" />
     <Content Include="CLI_Usage_Guide.md" />
     <Content Include="core\config_loader.py" />
     <Compile Include="core\logger.py" />
     <Compile Include="core\sql_task_base.py" />
+    <Compile Include="tasks\natural_language_to_sql.py" />
     <Compile Include="tasks\sql_explainer.py" />
     <Compile Include="tasks\sql_performance_benchmark.py" />
+    <Compile Include="tasks\sql_query_simulator_validator.py" />
+    <Compile Include="tasks\sql_query_validator.py" />
     <Compile Include="tasks\sql_refactorer.py" />
     <Compile Include="tasks\sql_security_auditor.py" />
     <Compile Include="tasks\sql_test_generator.py" />
+    <Compile Include="tests\test_natural_language_to_sql.py" />
     <Compile Include="tests\test_sql_performance_benchmark.py" />
+    <Compile Include="tests\test_sql_query_validator.py" />
+    <Compile Include="tests\test_sql_security_auditor.py" />
     <Compile Include="utils\file_utils.py" />
     <Compile Include="utils\prompt_manager.py" />
     <Compile Include="utils\sanitizer.py" />
     <Compile Include="tasks\sql_analyzer.py" />
     <Compile Include="tasks\sql_commenter.py" />
+    <Content Include="sql\sp_GenerateSchemaJSON.sql" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="GenAI SQL Doc.docx" />
     <Content Include="LICENSE" />
-    <Content Include="logs\sql_analyzer.log" />
     <Content Include="prompts\index.yaml" />
     <Content Include="README.md" />
-    <Content Include="sql_commenter.log" />
+    <Content Include="schema\aw2019.json" />
+    <Content Include="schema\HealthClaimsDemo.json" />
+    <Content Include="schema\HealthClaimsDW.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="core\" />
     <Folder Include="logs\" />
+    <Folder Include="learn\" />
+    <Folder Include="cli\" />
+    <Folder Include="custom_outputs\" />
+    <Folder Include="sql\" />
+    <Folder Include="output\" />
+    <Folder Include="schema\" />
     <Folder Include="tests\" />
     <Folder Include="prompts\" />
     <Folder Include="utils\" />

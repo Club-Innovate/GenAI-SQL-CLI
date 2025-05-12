@@ -1,0 +1,1853 @@
+{
+  "Schema": [
+    {
+      "TableName": "Address",
+      "Columns": [
+        { "ColumnName": "AddressID" },
+        { "ColumnName": "AddressLine1" },
+        { "ColumnName": "AddressLine2" },
+        { "ColumnName": "City" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "PostalCode" },
+        { "ColumnName": "rowguid" },
+        { "ColumnName": "SpatialLocation" },
+        { "ColumnName": "StateProvinceID" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "Address",
+          "ForeignKeyColumn": "StateProvinceID",
+          "PrimaryTable": "StateProvince",
+          "PrimaryKeyColumn": "StateProvinceID"
+        }
+      ]
+    },
+    {
+      "TableName": "AddressType",
+      "Columns": [
+        { "ColumnName": "AddressTypeID" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "Name" },
+        { "ColumnName": "rowguid" }
+      ]
+    },
+    {
+      "TableName": "AWBuildVersion",
+      "Columns": [
+        { "ColumnName": "Database Version" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "SystemInformationID" },
+        { "ColumnName": "VersionDate" }
+      ]
+    },
+    {
+      "TableName": "BillOfMaterials",
+      "Columns": [
+        { "ColumnName": "BillOfMaterialsID" },
+        { "ColumnName": "BOMLevel" },
+        { "ColumnName": "ComponentID" },
+        { "ColumnName": "EndDate" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "PerAssemblyQty" },
+        { "ColumnName": "ProductAssemblyID" },
+        { "ColumnName": "StartDate" },
+        { "ColumnName": "UnitMeasureCode" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "BillOfMaterials",
+          "ForeignKeyColumn": "ProductAssemblyID",
+          "PrimaryTable": "Product",
+          "PrimaryKeyColumn": "ProductID"
+        },
+        {
+          "RelatedTable": "BillOfMaterials",
+          "ForeignKeyColumn": "ComponentID",
+          "PrimaryTable": "Product",
+          "PrimaryKeyColumn": "ProductID"
+        },
+        {
+          "RelatedTable": "BillOfMaterials",
+          "ForeignKeyColumn": "UnitMeasureCode",
+          "PrimaryTable": "UnitMeasure",
+          "PrimaryKeyColumn": "UnitMeasureCode"
+        }
+      ]
+    },
+    {
+      "TableName": "BusinessEntity",
+      "Columns": [
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "rowguid" }
+      ]
+    },
+    {
+      "TableName": "BusinessEntityAddress",
+      "Columns": [
+        { "ColumnName": "AddressID" },
+        { "ColumnName": "AddressTypeID" },
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "rowguid" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "BusinessEntityAddress",
+          "ForeignKeyColumn": "AddressID",
+          "PrimaryTable": "Address",
+          "PrimaryKeyColumn": "AddressID"
+        },
+        {
+          "RelatedTable": "BusinessEntityAddress",
+          "ForeignKeyColumn": "AddressTypeID",
+          "PrimaryTable": "AddressType",
+          "PrimaryKeyColumn": "AddressTypeID"
+        },
+        {
+          "RelatedTable": "BusinessEntityAddress",
+          "ForeignKeyColumn": "BusinessEntityID",
+          "PrimaryTable": "BusinessEntity",
+          "PrimaryKeyColumn": "BusinessEntityID"
+        }
+      ]
+    },
+    {
+      "TableName": "BusinessEntityContact",
+      "Columns": [
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "ContactTypeID" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "PersonID" },
+        { "ColumnName": "rowguid" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "BusinessEntityContact",
+          "ForeignKeyColumn": "BusinessEntityID",
+          "PrimaryTable": "BusinessEntity",
+          "PrimaryKeyColumn": "BusinessEntityID"
+        },
+        {
+          "RelatedTable": "BusinessEntityContact",
+          "ForeignKeyColumn": "ContactTypeID",
+          "PrimaryTable": "ContactType",
+          "PrimaryKeyColumn": "ContactTypeID"
+        },
+        {
+          "RelatedTable": "BusinessEntityContact",
+          "ForeignKeyColumn": "PersonID",
+          "PrimaryTable": "Person",
+          "PrimaryKeyColumn": "BusinessEntityID"
+        }
+      ]
+    },
+    {
+      "TableName": "ContactType",
+      "Columns": [
+        { "ColumnName": "ContactTypeID" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "Name" }
+      ]
+    },
+    {
+      "TableName": "CountryRegion",
+      "Columns": [
+        { "ColumnName": "CountryRegionCode" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "Name" }
+      ]
+    },
+    {
+      "TableName": "CountryRegionCurrency",
+      "Columns": [
+        { "ColumnName": "CountryRegionCode" },
+        { "ColumnName": "CurrencyCode" },
+        { "ColumnName": "ModifiedDate" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "CountryRegionCurrency",
+          "ForeignKeyColumn": "CountryRegionCode",
+          "PrimaryTable": "CountryRegion",
+          "PrimaryKeyColumn": "CountryRegionCode"
+        },
+        {
+          "RelatedTable": "CountryRegionCurrency",
+          "ForeignKeyColumn": "CurrencyCode",
+          "PrimaryTable": "Currency",
+          "PrimaryKeyColumn": "CurrencyCode"
+        }
+      ]
+    },
+    {
+      "TableName": "CreditCard",
+      "Columns": [
+        { "ColumnName": "CardNumber" },
+        { "ColumnName": "CardType" },
+        { "ColumnName": "CreditCardID" },
+        { "ColumnName": "ExpMonth" },
+        { "ColumnName": "ExpYear" },
+        { "ColumnName": "ModifiedDate" }
+      ]
+    },
+    {
+      "TableName": "Culture",
+      "Columns": [
+        { "ColumnName": "CultureID" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "Name" }
+      ]
+    },
+    {
+      "TableName": "Currency",
+      "Columns": [
+        { "ColumnName": "CurrencyCode" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "Name" }
+      ]
+    },
+    {
+      "TableName": "CurrencyRate",
+      "Columns": [
+        { "ColumnName": "AverageRate" },
+        { "ColumnName": "CurrencyRateDate" },
+        { "ColumnName": "CurrencyRateID" },
+        { "ColumnName": "EndOfDayRate" },
+        { "ColumnName": "FromCurrencyCode" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "ToCurrencyCode" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "CurrencyRate",
+          "ForeignKeyColumn": "FromCurrencyCode",
+          "PrimaryTable": "Currency",
+          "PrimaryKeyColumn": "CurrencyCode"
+        },
+        {
+          "RelatedTable": "CurrencyRate",
+          "ForeignKeyColumn": "ToCurrencyCode",
+          "PrimaryTable": "Currency",
+          "PrimaryKeyColumn": "CurrencyCode"
+        }
+      ]
+    },
+    {
+      "TableName": "Customer",
+      "Columns": [
+        { "ColumnName": "AccountNumber" },
+        { "ColumnName": "CustomerID" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "PersonID" },
+        { "ColumnName": "rowguid" },
+        { "ColumnName": "StoreID" },
+        { "ColumnName": "TerritoryID" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "Customer",
+          "ForeignKeyColumn": "PersonID",
+          "PrimaryTable": "Person",
+          "PrimaryKeyColumn": "BusinessEntityID"
+        },
+        {
+          "RelatedTable": "Customer",
+          "ForeignKeyColumn": "TerritoryID",
+          "PrimaryTable": "SalesTerritory",
+          "PrimaryKeyColumn": "TerritoryID"
+        },
+        {
+          "RelatedTable": "Customer",
+          "ForeignKeyColumn": "StoreID",
+          "PrimaryTable": "Store",
+          "PrimaryKeyColumn": "BusinessEntityID"
+        }
+      ]
+    },
+    {
+      "TableName": "DatabaseLog",
+      "Columns": [
+        { "ColumnName": "DatabaseLogID" },
+        { "ColumnName": "DatabaseUser" },
+        { "ColumnName": "Event" },
+        { "ColumnName": "Object" },
+        { "ColumnName": "PostTime" },
+        { "ColumnName": "Schema" },
+        { "ColumnName": "TSQL" },
+        { "ColumnName": "XmlEvent" }
+      ]
+    },
+    {
+      "TableName": "Department",
+      "Columns": [
+        { "ColumnName": "DepartmentID" },
+        { "ColumnName": "GroupName" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "Name" }
+      ]
+    },
+    {
+      "TableName": "Document",
+      "Columns": [
+        { "ColumnName": "ChangeNumber" },
+        { "ColumnName": "Document" },
+        { "ColumnName": "DocumentLevel" },
+        { "ColumnName": "DocumentNode" },
+        { "ColumnName": "DocumentSummary" },
+        { "ColumnName": "FileExtension" },
+        { "ColumnName": "FileName" },
+        { "ColumnName": "FolderFlag" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "Owner" },
+        { "ColumnName": "Revision" },
+        { "ColumnName": "rowguid" },
+        { "ColumnName": "Status" },
+        { "ColumnName": "Title" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "Document",
+          "ForeignKeyColumn": "Owner",
+          "PrimaryTable": "Employee",
+          "PrimaryKeyColumn": "BusinessEntityID"
+        }
+      ]
+    },
+    {
+      "TableName": "EmailAddress",
+      "Columns": [
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "EmailAddress" },
+        { "ColumnName": "EmailAddressID" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "rowguid" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "EmailAddress",
+          "ForeignKeyColumn": "BusinessEntityID",
+          "PrimaryTable": "Person",
+          "PrimaryKeyColumn": "BusinessEntityID"
+        }
+      ]
+    },
+    {
+      "TableName": "Employee",
+      "Columns": [
+        { "ColumnName": "BirthDate" },
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "CurrentFlag" },
+        { "ColumnName": "Gender" },
+        { "ColumnName": "HireDate" },
+        { "ColumnName": "JobTitle" },
+        { "ColumnName": "LoginID" },
+        { "ColumnName": "MaritalStatus" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "NationalIDNumber" },
+        { "ColumnName": "OrganizationLevel" },
+        { "ColumnName": "OrganizationNode" },
+        { "ColumnName": "rowguid" },
+        { "ColumnName": "SalariedFlag" },
+        { "ColumnName": "SickLeaveHours" },
+        { "ColumnName": "VacationHours" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "Employee",
+          "ForeignKeyColumn": "BusinessEntityID",
+          "PrimaryTable": "Person",
+          "PrimaryKeyColumn": "BusinessEntityID"
+        }
+      ]
+    },
+    {
+      "TableName": "EmployeeDepartmentHistory",
+      "Columns": [
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "DepartmentID" },
+        { "ColumnName": "EndDate" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "ShiftID" },
+        { "ColumnName": "StartDate" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "EmployeeDepartmentHistory",
+          "ForeignKeyColumn": "DepartmentID",
+          "PrimaryTable": "Department",
+          "PrimaryKeyColumn": "DepartmentID"
+        },
+        {
+          "RelatedTable": "EmployeeDepartmentHistory",
+          "ForeignKeyColumn": "BusinessEntityID",
+          "PrimaryTable": "Employee",
+          "PrimaryKeyColumn": "BusinessEntityID"
+        },
+        {
+          "RelatedTable": "EmployeeDepartmentHistory",
+          "ForeignKeyColumn": "ShiftID",
+          "PrimaryTable": "Shift",
+          "PrimaryKeyColumn": "ShiftID"
+        }
+      ]
+    },
+    {
+      "TableName": "EmployeePayHistory",
+      "Columns": [
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "PayFrequency" },
+        { "ColumnName": "Rate" },
+        { "ColumnName": "RateChangeDate" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "EmployeePayHistory",
+          "ForeignKeyColumn": "BusinessEntityID",
+          "PrimaryTable": "Employee",
+          "PrimaryKeyColumn": "BusinessEntityID"
+        }
+      ]
+    },
+    {
+      "TableName": "ErrorLog",
+      "Columns": [
+        { "ColumnName": "ErrorLine" },
+        { "ColumnName": "ErrorLogID" },
+        { "ColumnName": "ErrorMessage" },
+        { "ColumnName": "ErrorNumber" },
+        { "ColumnName": "ErrorProcedure" },
+        { "ColumnName": "ErrorSeverity" },
+        { "ColumnName": "ErrorState" },
+        { "ColumnName": "ErrorTime" },
+        { "ColumnName": "UserName" }
+      ]
+    },
+    {
+      "TableName": "Illustration",
+      "Columns": [
+        { "ColumnName": "Diagram" },
+        { "ColumnName": "IllustrationID" },
+        { "ColumnName": "ModifiedDate" }
+      ]
+    },
+    {
+      "TableName": "JobCandidate",
+      "Columns": [
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "JobCandidateID" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "Resume" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "JobCandidate",
+          "ForeignKeyColumn": "BusinessEntityID",
+          "PrimaryTable": "Employee",
+          "PrimaryKeyColumn": "BusinessEntityID"
+        }
+      ]
+    },
+    {
+      "TableName": "Location",
+      "Columns": [
+        { "ColumnName": "Availability" },
+        { "ColumnName": "CostRate" },
+        { "ColumnName": "LocationID" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "Name" }
+      ]
+    },
+    {
+      "TableName": "Password",
+      "Columns": [
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "PasswordHash" },
+        { "ColumnName": "PasswordSalt" },
+        { "ColumnName": "rowguid" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "Password",
+          "ForeignKeyColumn": "BusinessEntityID",
+          "PrimaryTable": "Person",
+          "PrimaryKeyColumn": "BusinessEntityID"
+        }
+      ]
+    },
+    {
+      "TableName": "Person",
+      "Columns": [
+        { "ColumnName": "AdditionalContactInfo" },
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "Demographics" },
+        { "ColumnName": "EmailPromotion" },
+        { "ColumnName": "FirstName" },
+        { "ColumnName": "LastName" },
+        { "ColumnName": "MiddleName" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "NameStyle" },
+        { "ColumnName": "PersonType" },
+        { "ColumnName": "rowguid" },
+        { "ColumnName": "Suffix" },
+        { "ColumnName": "Title" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "Person",
+          "ForeignKeyColumn": "BusinessEntityID",
+          "PrimaryTable": "BusinessEntity",
+          "PrimaryKeyColumn": "BusinessEntityID"
+        }
+      ]
+    },
+    {
+      "TableName": "PersonCreditCard",
+      "Columns": [
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "CreditCardID" },
+        { "ColumnName": "ModifiedDate" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "PersonCreditCard",
+          "ForeignKeyColumn": "BusinessEntityID",
+          "PrimaryTable": "Person",
+          "PrimaryKeyColumn": "BusinessEntityID"
+        },
+        {
+          "RelatedTable": "PersonCreditCard",
+          "ForeignKeyColumn": "CreditCardID",
+          "PrimaryTable": "CreditCard",
+          "PrimaryKeyColumn": "CreditCardID"
+        }
+      ]
+    },
+    {
+      "TableName": "PersonPhone",
+      "Columns": [
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "PhoneNumber" },
+        { "ColumnName": "PhoneNumberTypeID" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "PersonPhone",
+          "ForeignKeyColumn": "BusinessEntityID",
+          "PrimaryTable": "Person",
+          "PrimaryKeyColumn": "BusinessEntityID"
+        },
+        {
+          "RelatedTable": "PersonPhone",
+          "ForeignKeyColumn": "PhoneNumberTypeID",
+          "PrimaryTable": "PhoneNumberType",
+          "PrimaryKeyColumn": "PhoneNumberTypeID"
+        }
+      ]
+    },
+    {
+      "TableName": "PhoneNumberType",
+      "Columns": [
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "Name" },
+        { "ColumnName": "PhoneNumberTypeID" }
+      ]
+    },
+    {
+      "TableName": "Product",
+      "Columns": [
+        { "ColumnName": "Class" },
+        { "ColumnName": "Color" },
+        { "ColumnName": "DaysToManufacture" },
+        { "ColumnName": "DiscontinuedDate" },
+        { "ColumnName": "FinishedGoodsFlag" },
+        { "ColumnName": "ListPrice" },
+        { "ColumnName": "MakeFlag" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "Name" },
+        { "ColumnName": "ProductID" },
+        { "ColumnName": "ProductLine" },
+        { "ColumnName": "ProductModelID" },
+        { "ColumnName": "ProductNumber" },
+        { "ColumnName": "ProductSubcategoryID" },
+        { "ColumnName": "ReorderPoint" },
+        { "ColumnName": "rowguid" },
+        { "ColumnName": "SafetyStockLevel" },
+        { "ColumnName": "SellEndDate" },
+        { "ColumnName": "SellStartDate" },
+        { "ColumnName": "Size" },
+        { "ColumnName": "SizeUnitMeasureCode" },
+        { "ColumnName": "StandardCost" },
+        { "ColumnName": "Style" },
+        { "ColumnName": "Weight" },
+        { "ColumnName": "WeightUnitMeasureCode" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "Product",
+          "ForeignKeyColumn": "ProductModelID",
+          "PrimaryTable": "ProductModel",
+          "PrimaryKeyColumn": "ProductModelID"
+        },
+        {
+          "RelatedTable": "Product",
+          "ForeignKeyColumn": "ProductSubcategoryID",
+          "PrimaryTable": "ProductSubcategory",
+          "PrimaryKeyColumn": "ProductSubcategoryID"
+        },
+        {
+          "RelatedTable": "Product",
+          "ForeignKeyColumn": "SizeUnitMeasureCode",
+          "PrimaryTable": "UnitMeasure",
+          "PrimaryKeyColumn": "UnitMeasureCode"
+        },
+        {
+          "RelatedTable": "Product",
+          "ForeignKeyColumn": "WeightUnitMeasureCode",
+          "PrimaryTable": "UnitMeasure",
+          "PrimaryKeyColumn": "UnitMeasureCode"
+        }
+      ]
+    },
+    {
+      "TableName": "ProductCategory",
+      "Columns": [
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "Name" },
+        { "ColumnName": "ProductCategoryID" },
+        { "ColumnName": "rowguid" }
+      ]
+    },
+    {
+      "TableName": "ProductCostHistory",
+      "Columns": [
+        { "ColumnName": "EndDate" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "ProductID" },
+        { "ColumnName": "StandardCost" },
+        { "ColumnName": "StartDate" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "ProductCostHistory",
+          "ForeignKeyColumn": "ProductID",
+          "PrimaryTable": "Product",
+          "PrimaryKeyColumn": "ProductID"
+        }
+      ]
+    },
+    {
+      "TableName": "ProductDescription",
+      "Columns": [
+        { "ColumnName": "Description" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "ProductDescriptionID" },
+        { "ColumnName": "rowguid" }
+      ]
+    },
+    {
+      "TableName": "ProductDocument",
+      "Columns": [
+        { "ColumnName": "DocumentNode" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "ProductID" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "ProductDocument",
+          "ForeignKeyColumn": "DocumentNode",
+          "PrimaryTable": "Document",
+          "PrimaryKeyColumn": "DocumentNode"
+        },
+        {
+          "RelatedTable": "ProductDocument",
+          "ForeignKeyColumn": "ProductID",
+          "PrimaryTable": "Product",
+          "PrimaryKeyColumn": "ProductID"
+        }
+      ]
+    },
+    {
+      "TableName": "ProductInventory",
+      "Columns": [
+        { "ColumnName": "Bin" },
+        { "ColumnName": "LocationID" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "ProductID" },
+        { "ColumnName": "Quantity" },
+        { "ColumnName": "rowguid" },
+        { "ColumnName": "Shelf" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "ProductInventory",
+          "ForeignKeyColumn": "LocationID",
+          "PrimaryTable": "Location",
+          "PrimaryKeyColumn": "LocationID"
+        },
+        {
+          "RelatedTable": "ProductInventory",
+          "ForeignKeyColumn": "ProductID",
+          "PrimaryTable": "Product",
+          "PrimaryKeyColumn": "ProductID"
+        }
+      ]
+    },
+    {
+      "TableName": "ProductListPriceHistory",
+      "Columns": [
+        { "ColumnName": "EndDate" },
+        { "ColumnName": "ListPrice" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "ProductID" },
+        { "ColumnName": "StartDate" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "ProductListPriceHistory",
+          "ForeignKeyColumn": "ProductID",
+          "PrimaryTable": "Product",
+          "PrimaryKeyColumn": "ProductID"
+        }
+      ]
+    },
+    {
+      "TableName": "ProductModel",
+      "Columns": [
+        { "ColumnName": "CatalogDescription" },
+        { "ColumnName": "Instructions" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "Name" },
+        { "ColumnName": "ProductModelID" },
+        { "ColumnName": "rowguid" }
+      ]
+    },
+    {
+      "TableName": "ProductModelIllustration",
+      "Columns": [
+        { "ColumnName": "IllustrationID" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "ProductModelID" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "ProductModelIllustration",
+          "ForeignKeyColumn": "IllustrationID",
+          "PrimaryTable": "Illustration",
+          "PrimaryKeyColumn": "IllustrationID"
+        },
+        {
+          "RelatedTable": "ProductModelIllustration",
+          "ForeignKeyColumn": "ProductModelID",
+          "PrimaryTable": "ProductModel",
+          "PrimaryKeyColumn": "ProductModelID"
+        }
+      ]
+    },
+    {
+      "TableName": "ProductModelProductDescriptionCulture",
+      "Columns": [
+        { "ColumnName": "CultureID" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "ProductDescriptionID" },
+        { "ColumnName": "ProductModelID" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "ProductModelProductDescriptionCulture",
+          "ForeignKeyColumn": "CultureID",
+          "PrimaryTable": "Culture",
+          "PrimaryKeyColumn": "CultureID"
+        },
+        {
+          "RelatedTable": "ProductModelProductDescriptionCulture",
+          "ForeignKeyColumn": "ProductDescriptionID",
+          "PrimaryTable": "ProductDescription",
+          "PrimaryKeyColumn": "ProductDescriptionID"
+        },
+        {
+          "RelatedTable": "ProductModelProductDescriptionCulture",
+          "ForeignKeyColumn": "ProductModelID",
+          "PrimaryTable": "ProductModel",
+          "PrimaryKeyColumn": "ProductModelID"
+        }
+      ]
+    },
+    {
+      "TableName": "ProductPhoto",
+      "Columns": [
+        { "ColumnName": "LargePhoto" },
+        { "ColumnName": "LargePhotoFileName" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "ProductPhotoID" },
+        { "ColumnName": "ThumbNailPhoto" },
+        { "ColumnName": "ThumbnailPhotoFileName" }
+      ]
+    },
+    {
+      "TableName": "ProductProductPhoto",
+      "Columns": [
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "Primary" },
+        { "ColumnName": "ProductID" },
+        { "ColumnName": "ProductPhotoID" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "ProductProductPhoto",
+          "ForeignKeyColumn": "ProductID",
+          "PrimaryTable": "Product",
+          "PrimaryKeyColumn": "ProductID"
+        },
+        {
+          "RelatedTable": "ProductProductPhoto",
+          "ForeignKeyColumn": "ProductPhotoID",
+          "PrimaryTable": "ProductPhoto",
+          "PrimaryKeyColumn": "ProductPhotoID"
+        }
+      ]
+    },
+    {
+      "TableName": "ProductReview",
+      "Columns": [
+        { "ColumnName": "Comments" },
+        { "ColumnName": "EmailAddress" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "ProductID" },
+        { "ColumnName": "ProductReviewID" },
+        { "ColumnName": "Rating" },
+        { "ColumnName": "ReviewDate" },
+        { "ColumnName": "ReviewerName" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "ProductReview",
+          "ForeignKeyColumn": "ProductID",
+          "PrimaryTable": "Product",
+          "PrimaryKeyColumn": "ProductID"
+        }
+      ]
+    },
+    {
+      "TableName": "ProductSubcategory",
+      "Columns": [
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "Name" },
+        { "ColumnName": "ProductCategoryID" },
+        { "ColumnName": "ProductSubcategoryID" },
+        { "ColumnName": "rowguid" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "ProductSubcategory",
+          "ForeignKeyColumn": "ProductCategoryID",
+          "PrimaryTable": "ProductCategory",
+          "PrimaryKeyColumn": "ProductCategoryID"
+        }
+      ]
+    },
+    {
+      "TableName": "ProductVendor",
+      "Columns": [
+        { "ColumnName": "AverageLeadTime" },
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "LastReceiptCost" },
+        { "ColumnName": "LastReceiptDate" },
+        { "ColumnName": "MaxOrderQty" },
+        { "ColumnName": "MinOrderQty" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "OnOrderQty" },
+        { "ColumnName": "ProductID" },
+        { "ColumnName": "StandardPrice" },
+        { "ColumnName": "UnitMeasureCode" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "ProductVendor",
+          "ForeignKeyColumn": "ProductID",
+          "PrimaryTable": "Product",
+          "PrimaryKeyColumn": "ProductID"
+        },
+        {
+          "RelatedTable": "ProductVendor",
+          "ForeignKeyColumn": "UnitMeasureCode",
+          "PrimaryTable": "UnitMeasure",
+          "PrimaryKeyColumn": "UnitMeasureCode"
+        },
+        {
+          "RelatedTable": "ProductVendor",
+          "ForeignKeyColumn": "BusinessEntityID",
+          "PrimaryTable": "Vendor",
+          "PrimaryKeyColumn": "BusinessEntityID"
+        }
+      ]
+    },
+    {
+      "TableName": "PurchaseOrderDetail",
+      "Columns": [
+        { "ColumnName": "DueDate" },
+        { "ColumnName": "LineTotal" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "OrderQty" },
+        { "ColumnName": "ProductID" },
+        { "ColumnName": "PurchaseOrderDetailID" },
+        { "ColumnName": "PurchaseOrderID" },
+        { "ColumnName": "ReceivedQty" },
+        { "ColumnName": "RejectedQty" },
+        { "ColumnName": "StockedQty" },
+        { "ColumnName": "UnitPrice" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "PurchaseOrderDetail",
+          "ForeignKeyColumn": "ProductID",
+          "PrimaryTable": "Product",
+          "PrimaryKeyColumn": "ProductID"
+        },
+        {
+          "RelatedTable": "PurchaseOrderDetail",
+          "ForeignKeyColumn": "PurchaseOrderID",
+          "PrimaryTable": "PurchaseOrderHeader",
+          "PrimaryKeyColumn": "PurchaseOrderID"
+        }
+      ]
+    },
+    {
+      "TableName": "PurchaseOrderHeader",
+      "Columns": [
+        { "ColumnName": "EmployeeID" },
+        { "ColumnName": "Freight" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "OrderDate" },
+        { "ColumnName": "PurchaseOrderID" },
+        { "ColumnName": "RevisionNumber" },
+        { "ColumnName": "ShipDate" },
+        { "ColumnName": "ShipMethodID" },
+        { "ColumnName": "Status" },
+        { "ColumnName": "SubTotal" },
+        { "ColumnName": "TaxAmt" },
+        { "ColumnName": "TotalDue" },
+        { "ColumnName": "VendorID" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "PurchaseOrderHeader",
+          "ForeignKeyColumn": "EmployeeID",
+          "PrimaryTable": "Employee",
+          "PrimaryKeyColumn": "BusinessEntityID"
+        },
+        {
+          "RelatedTable": "PurchaseOrderHeader",
+          "ForeignKeyColumn": "ShipMethodID",
+          "PrimaryTable": "ShipMethod",
+          "PrimaryKeyColumn": "ShipMethodID"
+        },
+        {
+          "RelatedTable": "PurchaseOrderHeader",
+          "ForeignKeyColumn": "VendorID",
+          "PrimaryTable": "Vendor",
+          "PrimaryKeyColumn": "BusinessEntityID"
+        }
+      ]
+    },
+    {
+      "TableName": "SalesOrderDetail",
+      "Columns": [
+        { "ColumnName": "CarrierTrackingNumber" },
+        { "ColumnName": "LineTotal" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "OrderQty" },
+        { "ColumnName": "ProductID" },
+        { "ColumnName": "rowguid" },
+        { "ColumnName": "SalesOrderDetailID" },
+        { "ColumnName": "SalesOrderID" },
+        { "ColumnName": "SpecialOfferID" },
+        { "ColumnName": "UnitPrice" },
+        { "ColumnName": "UnitPriceDiscount" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "SalesOrderDetail",
+          "ForeignKeyColumn": "SalesOrderID",
+          "PrimaryTable": "SalesOrderHeader",
+          "PrimaryKeyColumn": "SalesOrderID"
+        },
+        {
+          "RelatedTable": "SalesOrderDetail",
+          "ForeignKeyColumn": "ProductID",
+          "PrimaryTable": "SpecialOfferProduct",
+          "PrimaryKeyColumn": "ProductID"
+        },
+        {
+          "RelatedTable": "SalesOrderDetail",
+          "ForeignKeyColumn": "SpecialOfferID",
+          "PrimaryTable": "SpecialOfferProduct",
+          "PrimaryKeyColumn": "ProductID"
+        },
+        {
+          "RelatedTable": "SalesOrderDetail",
+          "ForeignKeyColumn": "ProductID",
+          "PrimaryTable": "SpecialOfferProduct",
+          "PrimaryKeyColumn": "SpecialOfferID"
+        },
+        {
+          "RelatedTable": "SalesOrderDetail",
+          "ForeignKeyColumn": "SpecialOfferID",
+          "PrimaryTable": "SpecialOfferProduct",
+          "PrimaryKeyColumn": "SpecialOfferID"
+        }
+      ]
+    },
+    {
+      "TableName": "SalesOrderHeader",
+      "Columns": [
+        { "ColumnName": "AccountNumber" },
+        { "ColumnName": "BillToAddressID" },
+        { "ColumnName": "Comment" },
+        { "ColumnName": "CreditCardApprovalCode" },
+        { "ColumnName": "CreditCardID" },
+        { "ColumnName": "CurrencyRateID" },
+        { "ColumnName": "CustomerID" },
+        { "ColumnName": "DueDate" },
+        { "ColumnName": "Freight" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "OnlineOrderFlag" },
+        { "ColumnName": "OrderDate" },
+        { "ColumnName": "PurchaseOrderNumber" },
+        { "ColumnName": "RevisionNumber" },
+        { "ColumnName": "rowguid" },
+        { "ColumnName": "SalesOrderID" },
+        { "ColumnName": "SalesOrderNumber" },
+        { "ColumnName": "SalesPersonID" },
+        { "ColumnName": "ShipDate" },
+        { "ColumnName": "ShipMethodID" },
+        { "ColumnName": "ShipToAddressID" },
+        { "ColumnName": "Status" },
+        { "ColumnName": "SubTotal" },
+        { "ColumnName": "TaxAmt" },
+        { "ColumnName": "TerritoryID" },
+        { "ColumnName": "TotalDue" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "SalesOrderHeader",
+          "ForeignKeyColumn": "BillToAddressID",
+          "PrimaryTable": "Address",
+          "PrimaryKeyColumn": "AddressID"
+        },
+        {
+          "RelatedTable": "SalesOrderHeader",
+          "ForeignKeyColumn": "ShipToAddressID",
+          "PrimaryTable": "Address",
+          "PrimaryKeyColumn": "AddressID"
+        },
+        {
+          "RelatedTable": "SalesOrderHeader",
+          "ForeignKeyColumn": "ShipMethodID",
+          "PrimaryTable": "ShipMethod",
+          "PrimaryKeyColumn": "ShipMethodID"
+        },
+        {
+          "RelatedTable": "SalesOrderHeader",
+          "ForeignKeyColumn": "CreditCardID",
+          "PrimaryTable": "CreditCard",
+          "PrimaryKeyColumn": "CreditCardID"
+        },
+        {
+          "RelatedTable": "SalesOrderHeader",
+          "ForeignKeyColumn": "CurrencyRateID",
+          "PrimaryTable": "CurrencyRate",
+          "PrimaryKeyColumn": "CurrencyRateID"
+        },
+        {
+          "RelatedTable": "SalesOrderHeader",
+          "ForeignKeyColumn": "CustomerID",
+          "PrimaryTable": "Customer",
+          "PrimaryKeyColumn": "CustomerID"
+        },
+        {
+          "RelatedTable": "SalesOrderHeader",
+          "ForeignKeyColumn": "SalesPersonID",
+          "PrimaryTable": "SalesPerson",
+          "PrimaryKeyColumn": "BusinessEntityID"
+        },
+        {
+          "RelatedTable": "SalesOrderHeader",
+          "ForeignKeyColumn": "TerritoryID",
+          "PrimaryTable": "SalesTerritory",
+          "PrimaryKeyColumn": "TerritoryID"
+        }
+      ]
+    },
+    {
+      "TableName": "SalesOrderHeaderSalesReason",
+      "Columns": [
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "SalesOrderID" },
+        { "ColumnName": "SalesReasonID" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "SalesOrderHeaderSalesReason",
+          "ForeignKeyColumn": "SalesOrderID",
+          "PrimaryTable": "SalesOrderHeader",
+          "PrimaryKeyColumn": "SalesOrderID"
+        },
+        {
+          "RelatedTable": "SalesOrderHeaderSalesReason",
+          "ForeignKeyColumn": "SalesReasonID",
+          "PrimaryTable": "SalesReason",
+          "PrimaryKeyColumn": "SalesReasonID"
+        }
+      ]
+    },
+    {
+      "TableName": "SalesPerson",
+      "Columns": [
+        { "ColumnName": "Bonus" },
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "CommissionPct" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "rowguid" },
+        { "ColumnName": "SalesLastYear" },
+        { "ColumnName": "SalesQuota" },
+        { "ColumnName": "SalesYTD" },
+        { "ColumnName": "TerritoryID" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "SalesPerson",
+          "ForeignKeyColumn": "BusinessEntityID",
+          "PrimaryTable": "Employee",
+          "PrimaryKeyColumn": "BusinessEntityID"
+        },
+        {
+          "RelatedTable": "SalesPerson",
+          "ForeignKeyColumn": "TerritoryID",
+          "PrimaryTable": "SalesTerritory",
+          "PrimaryKeyColumn": "TerritoryID"
+        }
+      ]
+    },
+    {
+      "TableName": "SalesPersonQuotaHistory",
+      "Columns": [
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "QuotaDate" },
+        { "ColumnName": "rowguid" },
+        { "ColumnName": "SalesQuota" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "SalesPersonQuotaHistory",
+          "ForeignKeyColumn": "BusinessEntityID",
+          "PrimaryTable": "SalesPerson",
+          "PrimaryKeyColumn": "BusinessEntityID"
+        }
+      ]
+    },
+    {
+      "TableName": "SalesReason",
+      "Columns": [
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "Name" },
+        { "ColumnName": "ReasonType" },
+        { "ColumnName": "SalesReasonID" }
+      ]
+    },
+    {
+      "TableName": "SalesTaxRate",
+      "Columns": [
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "Name" },
+        { "ColumnName": "rowguid" },
+        { "ColumnName": "SalesTaxRateID" },
+        { "ColumnName": "StateProvinceID" },
+        { "ColumnName": "TaxRate" },
+        { "ColumnName": "TaxType" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "SalesTaxRate",
+          "ForeignKeyColumn": "StateProvinceID",
+          "PrimaryTable": "StateProvince",
+          "PrimaryKeyColumn": "StateProvinceID"
+        }
+      ]
+    },
+    {
+      "TableName": "SalesTerritory",
+      "Columns": [
+        { "ColumnName": "CostLastYear" },
+        { "ColumnName": "CostYTD" },
+        { "ColumnName": "CountryRegionCode" },
+        { "ColumnName": "Group" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "Name" },
+        { "ColumnName": "rowguid" },
+        { "ColumnName": "SalesLastYear" },
+        { "ColumnName": "SalesYTD" },
+        { "ColumnName": "TerritoryID" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "SalesTerritory",
+          "ForeignKeyColumn": "CountryRegionCode",
+          "PrimaryTable": "CountryRegion",
+          "PrimaryKeyColumn": "CountryRegionCode"
+        }
+      ]
+    },
+    {
+      "TableName": "SalesTerritoryHistory",
+      "Columns": [
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "EndDate" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "rowguid" },
+        { "ColumnName": "StartDate" },
+        { "ColumnName": "TerritoryID" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "SalesTerritoryHistory",
+          "ForeignKeyColumn": "BusinessEntityID",
+          "PrimaryTable": "SalesPerson",
+          "PrimaryKeyColumn": "BusinessEntityID"
+        },
+        {
+          "RelatedTable": "SalesTerritoryHistory",
+          "ForeignKeyColumn": "TerritoryID",
+          "PrimaryTable": "SalesTerritory",
+          "PrimaryKeyColumn": "TerritoryID"
+        }
+      ]
+    },
+    {
+      "TableName": "ScrapReason",
+      "Columns": [
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "Name" },
+        { "ColumnName": "ScrapReasonID" }
+      ]
+    },
+    {
+      "TableName": "Shift",
+      "Columns": [
+        { "ColumnName": "EndTime" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "Name" },
+        { "ColumnName": "ShiftID" },
+        { "ColumnName": "StartTime" }
+      ]
+    },
+    {
+      "TableName": "ShipMethod",
+      "Columns": [
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "Name" },
+        { "ColumnName": "rowguid" },
+        { "ColumnName": "ShipBase" },
+        { "ColumnName": "ShipMethodID" },
+        { "ColumnName": "ShipRate" }
+      ]
+    },
+    {
+      "TableName": "ShoppingCartItem",
+      "Columns": [
+        { "ColumnName": "DateCreated" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "ProductID" },
+        { "ColumnName": "Quantity" },
+        { "ColumnName": "ShoppingCartID" },
+        { "ColumnName": "ShoppingCartItemID" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "ShoppingCartItem",
+          "ForeignKeyColumn": "ProductID",
+          "PrimaryTable": "Product",
+          "PrimaryKeyColumn": "ProductID"
+        }
+      ]
+    },
+    {
+      "TableName": "SpecialOffer",
+      "Columns": [
+        { "ColumnName": "Category" },
+        { "ColumnName": "Description" },
+        { "ColumnName": "DiscountPct" },
+        { "ColumnName": "EndDate" },
+        { "ColumnName": "MaxQty" },
+        { "ColumnName": "MinQty" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "rowguid" },
+        { "ColumnName": "SpecialOfferID" },
+        { "ColumnName": "StartDate" },
+        { "ColumnName": "Type" }
+      ]
+    },
+    {
+      "TableName": "SpecialOfferProduct",
+      "Columns": [
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "ProductID" },
+        { "ColumnName": "rowguid" },
+        { "ColumnName": "SpecialOfferID" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "SpecialOfferProduct",
+          "ForeignKeyColumn": "ProductID",
+          "PrimaryTable": "Product",
+          "PrimaryKeyColumn": "ProductID"
+        },
+        {
+          "RelatedTable": "SpecialOfferProduct",
+          "ForeignKeyColumn": "SpecialOfferID",
+          "PrimaryTable": "SpecialOffer",
+          "PrimaryKeyColumn": "SpecialOfferID"
+        }
+      ]
+    },
+    {
+      "TableName": "StateProvince",
+      "Columns": [
+        { "ColumnName": "CountryRegionCode" },
+        { "ColumnName": "IsOnlyStateProvinceFlag" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "Name" },
+        { "ColumnName": "rowguid" },
+        { "ColumnName": "StateProvinceCode" },
+        { "ColumnName": "StateProvinceID" },
+        { "ColumnName": "TerritoryID" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "StateProvince",
+          "ForeignKeyColumn": "CountryRegionCode",
+          "PrimaryTable": "CountryRegion",
+          "PrimaryKeyColumn": "CountryRegionCode"
+        },
+        {
+          "RelatedTable": "StateProvince",
+          "ForeignKeyColumn": "TerritoryID",
+          "PrimaryTable": "SalesTerritory",
+          "PrimaryKeyColumn": "TerritoryID"
+        }
+      ]
+    },
+    {
+      "TableName": "Store",
+      "Columns": [
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "Demographics" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "Name" },
+        { "ColumnName": "rowguid" },
+        { "ColumnName": "SalesPersonID" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "Store",
+          "ForeignKeyColumn": "BusinessEntityID",
+          "PrimaryTable": "BusinessEntity",
+          "PrimaryKeyColumn": "BusinessEntityID"
+        },
+        {
+          "RelatedTable": "Store",
+          "ForeignKeyColumn": "SalesPersonID",
+          "PrimaryTable": "SalesPerson",
+          "PrimaryKeyColumn": "BusinessEntityID"
+        }
+      ]
+    },
+    {
+      "TableName": "TransactionHistory",
+      "Columns": [
+        { "ColumnName": "ActualCost" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "ProductID" },
+        { "ColumnName": "Quantity" },
+        { "ColumnName": "ReferenceOrderID" },
+        { "ColumnName": "ReferenceOrderLineID" },
+        { "ColumnName": "TransactionDate" },
+        { "ColumnName": "TransactionID" },
+        { "ColumnName": "TransactionType" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "TransactionHistory",
+          "ForeignKeyColumn": "ProductID",
+          "PrimaryTable": "Product",
+          "PrimaryKeyColumn": "ProductID"
+        }
+      ]
+    },
+    {
+      "TableName": "TransactionHistoryArchive",
+      "Columns": [
+        { "ColumnName": "ActualCost" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "ProductID" },
+        { "ColumnName": "Quantity" },
+        { "ColumnName": "ReferenceOrderID" },
+        { "ColumnName": "ReferenceOrderLineID" },
+        { "ColumnName": "TransactionDate" },
+        { "ColumnName": "TransactionID" },
+        { "ColumnName": "TransactionType" }
+      ]
+    },
+    {
+      "TableName": "UnitMeasure",
+      "Columns": [
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "Name" },
+        { "ColumnName": "UnitMeasureCode" }
+      ]
+    },
+    {
+      "TableName": "vAdditionalContactInfo",
+      "Columns": [
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "City" },
+        { "ColumnName": "CountryRegion" },
+        { "ColumnName": "EMailAddress" },
+        { "ColumnName": "EMailSpecialInstructions" },
+        { "ColumnName": "EMailTelephoneNumber" },
+        { "ColumnName": "FirstName" },
+        { "ColumnName": "HomeAddressSpecialInstructions" },
+        { "ColumnName": "LastName" },
+        { "ColumnName": "MiddleName" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "PostalCode" },
+        { "ColumnName": "rowguid" },
+        { "ColumnName": "StateProvince" },
+        { "ColumnName": "Street" },
+        { "ColumnName": "TelephoneNumber" },
+        { "ColumnName": "TelephoneSpecialInstructions" }
+      ]
+    },
+    {
+      "TableName": "vEmployee",
+      "Columns": [
+        { "ColumnName": "AdditionalContactInfo" },
+        { "ColumnName": "AddressLine1" },
+        { "ColumnName": "AddressLine2" },
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "City" },
+        { "ColumnName": "CountryRegionName" },
+        { "ColumnName": "EmailAddress" },
+        { "ColumnName": "EmailPromotion" },
+        { "ColumnName": "FirstName" },
+        { "ColumnName": "JobTitle" },
+        { "ColumnName": "LastName" },
+        { "ColumnName": "MiddleName" },
+        { "ColumnName": "PhoneNumber" },
+        { "ColumnName": "PhoneNumberType" },
+        { "ColumnName": "PostalCode" },
+        { "ColumnName": "StateProvinceName" },
+        { "ColumnName": "Suffix" },
+        { "ColumnName": "Title" }
+      ]
+    },
+    {
+      "TableName": "vEmployeeDepartment",
+      "Columns": [
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "Department" },
+        { "ColumnName": "FirstName" },
+        { "ColumnName": "GroupName" },
+        { "ColumnName": "JobTitle" },
+        { "ColumnName": "LastName" },
+        { "ColumnName": "MiddleName" },
+        { "ColumnName": "StartDate" },
+        { "ColumnName": "Suffix" },
+        { "ColumnName": "Title" }
+      ]
+    },
+    {
+      "TableName": "vEmployeeDepartmentHistory",
+      "Columns": [
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "Department" },
+        { "ColumnName": "EndDate" },
+        { "ColumnName": "FirstName" },
+        { "ColumnName": "GroupName" },
+        { "ColumnName": "LastName" },
+        { "ColumnName": "MiddleName" },
+        { "ColumnName": "Shift" },
+        { "ColumnName": "StartDate" },
+        { "ColumnName": "Suffix" },
+        { "ColumnName": "Title" }
+      ]
+    },
+    {
+      "TableName": "Vendor",
+      "Columns": [
+        { "ColumnName": "AccountNumber" },
+        { "ColumnName": "ActiveFlag" },
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "CreditRating" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "Name" },
+        { "ColumnName": "PreferredVendorStatus" },
+        { "ColumnName": "PurchasingWebServiceURL" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "Vendor",
+          "ForeignKeyColumn": "BusinessEntityID",
+          "PrimaryTable": "BusinessEntity",
+          "PrimaryKeyColumn": "BusinessEntityID"
+        }
+      ]
+    },
+    {
+      "TableName": "vIndividualCustomer",
+      "Columns": [
+        { "ColumnName": "AddressLine1" },
+        { "ColumnName": "AddressLine2" },
+        { "ColumnName": "AddressType" },
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "City" },
+        { "ColumnName": "CountryRegionName" },
+        { "ColumnName": "Demographics" },
+        { "ColumnName": "EmailAddress" },
+        { "ColumnName": "EmailPromotion" },
+        { "ColumnName": "FirstName" },
+        { "ColumnName": "LastName" },
+        { "ColumnName": "MiddleName" },
+        { "ColumnName": "PhoneNumber" },
+        { "ColumnName": "PhoneNumberType" },
+        { "ColumnName": "PostalCode" },
+        { "ColumnName": "StateProvinceName" },
+        { "ColumnName": "Suffix" },
+        { "ColumnName": "Title" }
+      ]
+    },
+    {
+      "TableName": "vJobCandidate",
+      "Columns": [
+        { "ColumnName": "Addr.Loc.City" },
+        { "ColumnName": "Addr.Loc.CountryRegion" },
+        { "ColumnName": "Addr.Loc.State" },
+        { "ColumnName": "Addr.PostalCode" },
+        { "ColumnName": "Addr.Type" },
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "EMail" },
+        { "ColumnName": "JobCandidateID" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "Name.First" },
+        { "ColumnName": "Name.Last" },
+        { "ColumnName": "Name.Middle" },
+        { "ColumnName": "Name.Prefix" },
+        { "ColumnName": "Name.Suffix" },
+        { "ColumnName": "Skills" },
+        { "ColumnName": "WebSite" }
+      ]
+    },
+    {
+      "TableName": "vJobCandidateEducation",
+      "Columns": [
+        { "ColumnName": "Edu.Degree" },
+        { "ColumnName": "Edu.EndDate" },
+        { "ColumnName": "Edu.GPA" },
+        { "ColumnName": "Edu.GPAScale" },
+        { "ColumnName": "Edu.Level" },
+        { "ColumnName": "Edu.Loc.City" },
+        { "ColumnName": "Edu.Loc.CountryRegion" },
+        { "ColumnName": "Edu.Loc.State" },
+        { "ColumnName": "Edu.Major" },
+        { "ColumnName": "Edu.Minor" },
+        { "ColumnName": "Edu.School" },
+        { "ColumnName": "Edu.StartDate" },
+        { "ColumnName": "JobCandidateID" }
+      ]
+    },
+    {
+      "TableName": "vJobCandidateEmployment",
+      "Columns": [
+        { "ColumnName": "Emp.EndDate" },
+        { "ColumnName": "Emp.FunctionCategory" },
+        { "ColumnName": "Emp.IndustryCategory" },
+        { "ColumnName": "Emp.JobTitle" },
+        { "ColumnName": "Emp.Loc.City" },
+        { "ColumnName": "Emp.Loc.CountryRegion" },
+        { "ColumnName": "Emp.Loc.State" },
+        { "ColumnName": "Emp.OrgName" },
+        { "ColumnName": "Emp.Responsibility" },
+        { "ColumnName": "Emp.StartDate" },
+        { "ColumnName": "JobCandidateID" }
+      ]
+    },
+    {
+      "TableName": "vPersonDemographics",
+      "Columns": [
+        { "ColumnName": "BirthDate" },
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "DateFirstPurchase" },
+        { "ColumnName": "Education" },
+        { "ColumnName": "Gender" },
+        { "ColumnName": "HomeOwnerFlag" },
+        { "ColumnName": "MaritalStatus" },
+        { "ColumnName": "NumberCarsOwned" },
+        { "ColumnName": "NumberChildrenAtHome" },
+        { "ColumnName": "Occupation" },
+        { "ColumnName": "TotalChildren" },
+        { "ColumnName": "TotalPurchaseYTD" },
+        { "ColumnName": "YearlyIncome" }
+      ]
+    },
+    {
+      "TableName": "vProductAndDescription",
+      "Columns": [
+        { "ColumnName": "CultureID" },
+        { "ColumnName": "Description" },
+        { "ColumnName": "Name" },
+        { "ColumnName": "ProductID" },
+        { "ColumnName": "ProductModel" }
+      ]
+    },
+    {
+      "TableName": "vProductModelCatalogDescription",
+      "Columns": [
+        { "ColumnName": "BikeFrame" },
+        { "ColumnName": "Color" },
+        { "ColumnName": "Copyright" },
+        { "ColumnName": "Crankset" },
+        { "ColumnName": "MaintenanceDescription" },
+        { "ColumnName": "Manufacturer" },
+        { "ColumnName": "Material" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "Name" },
+        { "ColumnName": "NoOfYears" },
+        { "ColumnName": "Pedal" },
+        { "ColumnName": "PictureAngle" },
+        { "ColumnName": "PictureSize" },
+        { "ColumnName": "ProductLine" },
+        { "ColumnName": "ProductModelID" },
+        { "ColumnName": "ProductPhotoID" },
+        { "ColumnName": "ProductURL" },
+        { "ColumnName": "RiderExperience" },
+        { "ColumnName": "rowguid" },
+        { "ColumnName": "Saddle" },
+        { "ColumnName": "Style" },
+        { "ColumnName": "Summary" },
+        { "ColumnName": "WarrantyDescription" },
+        { "ColumnName": "WarrantyPeriod" },
+        { "ColumnName": "Wheel" }
+      ]
+    },
+    {
+      "TableName": "vProductModelInstructions",
+      "Columns": [
+        { "ColumnName": "Instructions" },
+        { "ColumnName": "LaborHours" },
+        { "ColumnName": "LocationID" },
+        { "ColumnName": "LotSize" },
+        { "ColumnName": "MachineHours" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "Name" },
+        { "ColumnName": "ProductModelID" },
+        { "ColumnName": "rowguid" },
+        { "ColumnName": "SetupHours" },
+        { "ColumnName": "Step" }
+      ]
+    },
+    {
+      "TableName": "vSalesPerson",
+      "Columns": [
+        { "ColumnName": "AddressLine1" },
+        { "ColumnName": "AddressLine2" },
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "City" },
+        { "ColumnName": "CountryRegionName" },
+        { "ColumnName": "EmailAddress" },
+        { "ColumnName": "EmailPromotion" },
+        { "ColumnName": "FirstName" },
+        { "ColumnName": "JobTitle" },
+        { "ColumnName": "LastName" },
+        { "ColumnName": "MiddleName" },
+        { "ColumnName": "PhoneNumber" },
+        { "ColumnName": "PhoneNumberType" },
+        { "ColumnName": "PostalCode" },
+        { "ColumnName": "SalesLastYear" },
+        { "ColumnName": "SalesQuota" },
+        { "ColumnName": "SalesYTD" },
+        { "ColumnName": "StateProvinceName" },
+        { "ColumnName": "Suffix" },
+        { "ColumnName": "TerritoryGroup" },
+        { "ColumnName": "TerritoryName" },
+        { "ColumnName": "Title" }
+      ]
+    },
+    {
+      "TableName": "vSalesPersonSalesByFiscalYears",
+      "Columns": [
+        { "ColumnName": "2002" },
+        { "ColumnName": "2003" },
+        { "ColumnName": "2004" },
+        { "ColumnName": "FullName" },
+        { "ColumnName": "JobTitle" },
+        { "ColumnName": "SalesPersonID" },
+        { "ColumnName": "SalesTerritory" }
+      ]
+    },
+    {
+      "TableName": "vStateProvinceCountryRegion",
+      "Columns": [
+        { "ColumnName": "CountryRegionCode" },
+        { "ColumnName": "CountryRegionName" },
+        { "ColumnName": "IsOnlyStateProvinceFlag" },
+        { "ColumnName": "StateProvinceCode" },
+        { "ColumnName": "StateProvinceID" },
+        { "ColumnName": "StateProvinceName" },
+        { "ColumnName": "TerritoryID" }
+      ]
+    },
+    {
+      "TableName": "vStoreWithAddresses",
+      "Columns": [
+        { "ColumnName": "AddressLine1" },
+        { "ColumnName": "AddressLine2" },
+        { "ColumnName": "AddressType" },
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "City" },
+        { "ColumnName": "CountryRegionName" },
+        { "ColumnName": "Name" },
+        { "ColumnName": "PostalCode" },
+        { "ColumnName": "StateProvinceName" }
+      ]
+    },
+    {
+      "TableName": "vStoreWithContacts",
+      "Columns": [
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "ContactType" },
+        { "ColumnName": "EmailAddress" },
+        { "ColumnName": "EmailPromotion" },
+        { "ColumnName": "FirstName" },
+        { "ColumnName": "LastName" },
+        { "ColumnName": "MiddleName" },
+        { "ColumnName": "Name" },
+        { "ColumnName": "PhoneNumber" },
+        { "ColumnName": "PhoneNumberType" },
+        { "ColumnName": "Suffix" },
+        { "ColumnName": "Title" }
+      ]
+    },
+    {
+      "TableName": "vStoreWithDemographics",
+      "Columns": [
+        { "ColumnName": "AnnualRevenue" },
+        { "ColumnName": "AnnualSales" },
+        { "ColumnName": "BankName" },
+        { "ColumnName": "Brands" },
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "BusinessType" },
+        { "ColumnName": "Internet" },
+        { "ColumnName": "Name" },
+        { "ColumnName": "NumberEmployees" },
+        { "ColumnName": "Specialty" },
+        { "ColumnName": "SquareFeet" },
+        { "ColumnName": "YearOpened" }
+      ]
+    },
+    {
+      "TableName": "vVendorWithAddresses",
+      "Columns": [
+        { "ColumnName": "AddressLine1" },
+        { "ColumnName": "AddressLine2" },
+        { "ColumnName": "AddressType" },
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "City" },
+        { "ColumnName": "CountryRegionName" },
+        { "ColumnName": "Name" },
+        { "ColumnName": "PostalCode" },
+        { "ColumnName": "StateProvinceName" }
+      ]
+    },
+    {
+      "TableName": "vVendorWithContacts",
+      "Columns": [
+        { "ColumnName": "BusinessEntityID" },
+        { "ColumnName": "ContactType" },
+        { "ColumnName": "EmailAddress" },
+        { "ColumnName": "EmailPromotion" },
+        { "ColumnName": "FirstName" },
+        { "ColumnName": "LastName" },
+        { "ColumnName": "MiddleName" },
+        { "ColumnName": "Name" },
+        { "ColumnName": "PhoneNumber" },
+        { "ColumnName": "PhoneNumberType" },
+        { "ColumnName": "Suffix" },
+        { "ColumnName": "Title" }
+      ]
+    },
+    {
+      "TableName": "WorkOrder",
+      "Columns": [
+        { "ColumnName": "DueDate" },
+        { "ColumnName": "EndDate" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "OrderQty" },
+        { "ColumnName": "ProductID" },
+        { "ColumnName": "ScrappedQty" },
+        { "ColumnName": "ScrapReasonID" },
+        { "ColumnName": "StartDate" },
+        { "ColumnName": "StockedQty" },
+        { "ColumnName": "WorkOrderID" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "WorkOrder",
+          "ForeignKeyColumn": "ProductID",
+          "PrimaryTable": "Product",
+          "PrimaryKeyColumn": "ProductID"
+        },
+        {
+          "RelatedTable": "WorkOrder",
+          "ForeignKeyColumn": "ScrapReasonID",
+          "PrimaryTable": "ScrapReason",
+          "PrimaryKeyColumn": "ScrapReasonID"
+        }
+      ]
+    },
+    {
+      "TableName": "WorkOrderRouting",
+      "Columns": [
+        { "ColumnName": "ActualCost" },
+        { "ColumnName": "ActualEndDate" },
+        { "ColumnName": "ActualResourceHrs" },
+        { "ColumnName": "ActualStartDate" },
+        { "ColumnName": "LocationID" },
+        { "ColumnName": "ModifiedDate" },
+        { "ColumnName": "OperationSequence" },
+        { "ColumnName": "PlannedCost" },
+        { "ColumnName": "ProductID" },
+        { "ColumnName": "ScheduledEndDate" },
+        { "ColumnName": "ScheduledStartDate" },
+        { "ColumnName": "WorkOrderID" }
+      ],
+      "Relationships": [
+        {
+          "RelatedTable": "WorkOrderRouting",
+          "ForeignKeyColumn": "LocationID",
+          "PrimaryTable": "Location",
+          "PrimaryKeyColumn": "LocationID"
+        },
+        {
+          "RelatedTable": "WorkOrderRouting",
+          "ForeignKeyColumn": "WorkOrderID",
+          "PrimaryTable": "WorkOrder",
+          "PrimaryKeyColumn": "WorkOrderID"
+        }
+      ]
+    }
+  ]
+}

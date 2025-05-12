@@ -1,6 +1,12 @@
+import os
+import sys
 import pytest
+from unittest.mock import AsyncMock
 from tasks.sql_performance_benchmark import SQLPerformanceBenchmark
 
+# Add the project root directory to the Python path
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(0, project_root)
 
 @pytest.mark.asyncio
 async def test_sql_performance_benchmark():
@@ -19,7 +25,7 @@ async def test_sql_performance_benchmark():
     )
 
     # Mock the AI client's response
-    benchmark_task.client.get_completion = lambda prompt, temperature: expected_output
+    benchmark_task.client.get_completion = AsyncMock(return_value=expected_output)
 
     # Run the task
     result = await benchmark_task.run(sql_query)
