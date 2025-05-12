@@ -27,12 +27,14 @@ sql_tools/
 │   ├── sql_explainer.py
 │   ├── sql_security_auditor.py
 │   ├── sql_test_generator.py
-│   ├── sql_performance_benchmark.py  # New: Added performance benchmarking and optimization
+│   ├── sql_performance_benchmark.py # New: Added performance benchmarking and optimization
 │   ├── sql_data_masker.py           # New: Data masking and anonymization
 │   ├── sql_visualizer.py            # New: Visualization and insights
 │   ├── sql_error_corrector.py       # New: Error correction and debugging
 │   ├── sql_style_enforcer.py        # New: Style guide enforcement
 │   ├── natural_language_to_sql.py   # New: Natural language to SQL conversion
+├── learn/                      # Learning Mode folder
+│   └── sql_learn_mode.py       # Interactive tutorials for SQL learning
 ├── prompts/                    # Centralized prompt management
 │   ├── index.yaml              # YAML file defining all prompts and metadata
 │   ├── summarization/          # Summarization-related prompt templates
@@ -159,6 +161,16 @@ python app.py --task=dynamic_sql --path="queries/sample_query.sql" --detect_only
 
 ```bash
 python app.py --task=dynamic_sql --path="queries/" --recursive
+```
+
+---
+
+### 👩‍🏫 SQL Learning Mode (Interactive Tutorials)
+
+### Run the Learning Mode directly:
+
+```bash
+python learn/sql_learn_mode.py
 ```
 
 ---

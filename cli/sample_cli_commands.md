@@ -253,3 +253,13 @@ python app.py --task=dynamic_sql --path="queries/" --recursive
 ```
 
 ---
+
+## 14. SQL Learning Mode
+
+SQL Education Mode uses a conversational AI command-line interface. The implementation will feature quizzes, a practice code editor, walkthrough examples, and text-based guidance. It will also be secure, performant, and compliant with best practices.
+
+### Run the Learning Mode directly:
+
+```bash
+python learn/sql_learn_mode.py
+```

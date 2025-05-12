@@ -5,7 +5,7 @@
     <ProjectGuid>87056297-41f6-450a-ada2-c4ef0f540a43</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>app.py</StartupFile>
+    <StartupFile>learn\sql_learn_mode.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -31,6 +31,8 @@
     <Content Include="core\config_loader.py" />
     <Compile Include="core\logger.py" />
     <Compile Include="core\sql_task_base.py" />
+    <Compile Include="learn\sql_learn_mode.py" />
+    <Compile Include="learn\__init__.py" />
     <Compile Include="utils\dynamic_sql_detector.py" />
     <Compile Include="tasks\natural_language_to_sql.py" />
     <Compile Include="tasks\sql_data_masker.py" />
