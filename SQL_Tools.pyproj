@@ -56,6 +56,7 @@
     <Compile Include="tasks\sql_analyzer.py" />
     <Compile Include="tasks\sql_commenter.py" />
     <Content Include="sql\sp_GenerateSchemaJSON.sql" />
+    <Content Include="use_cases_and_review.md" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="GenAI SQL Doc.docx" />
