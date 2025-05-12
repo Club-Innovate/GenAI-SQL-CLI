@@ -44,16 +44,16 @@ sys.path.insert(0, project_root)
 
 # Task registry
 TASKS = {
-    "comment": SQLCommenter,
-    "analyze": SQLAnalyzer,
-    "refactor": SQLRefactorer,
-    "explain": SQLExplainer,
-    "audit": EnhancedSQLSecurityAuditor,
-    "test": SQLTestGenerator,
-    "benchmark": SQLPerformanceBenchmark,
-    "validate": SQLQueryValidator,
-    "nl_to_sql": NaturalLanguageToSQL,
-    "mask": SQLDataMasker,
+    "comment": SQLCommenter,    # SQL Code Commenting
+    "analyze": SQLAnalyzer, # SQL Code Analysis
+    "refactor": SQLRefactorer,  # SQL Code Refactoring
+    "explain": SQLExplainer,    # SQL Code Explanation
+    "audit": EnhancedSQLSecurityAuditor,    # SQL Security Auditing
+    "test": SQLTestGenerator,   # SQL Test Generation
+    "benchmark": SQLPerformanceBenchmark,   # Performance Benchmarking 
+    "validate": SQLQueryValidator,  # SQL Query Validation
+    "nl_to_sql": NaturalLanguageToSQL, # Natural Language to SQL
+    "mask": SQLDataMasker, # Data Masking
     "style_enforce": SQLStyleEnforcer,  # SQL Style Guide Enforcement
     "dynamic_sql": DynamicSQLDetector,  # Dynamic SQL Detection
 }

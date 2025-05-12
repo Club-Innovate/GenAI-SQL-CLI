@@ -231,3 +231,25 @@ python app.py --task=style_enforce --path="queries/" --recursive --sql_dialect="
 ```bash
 python app.py --task=style_enforce --path="queries/sample_query.sql" --sql_dialect="PostgreSQL" --output="output/styled_query.sql"
 ```
+
+---
+
+## 13. Dynamic SQL Detection
+Identifies and analyzes dynamically generated SQL for risks and optimizations.
+
+### Detect patterns only:
+```bash
+python app.py --task=dynamic_sql --path="queries/sample_query.sql" --detect_only --dry-run
+```
+
+### Analyze risks and optimizations:
+```bash
+python app.py --task=dynamic_sql --path="queries/sample_query.sql" --dry-run
+```
+
+### Process all SQL files in a directory recursively:
+```bash
+python app.py --task=dynamic_sql --path="queries/" --recursive
+```
+
+---
