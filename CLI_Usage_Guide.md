@@ -1,4 +1,3 @@
-
 # 🧪 GenAI-SQL CLI Usage Guide
 
 This guide provides examples and explanations for using the `GenAI-SQL` CLI (`app.py`) with various task and execution options.
@@ -61,18 +60,73 @@ python app.py --task=audit --path=query.sql --git
 
 ## 🗣️ Explain Query Logic in Natural Language
 
+```bash
+python app.py --task=explain --path=query.sql --output=explanation.txt
+```
 
 ### 🔍 What It Does:
 - **Task**: `explain` — translates the logic of `query.sql` into a natural language explanation, making it easier to understand complex queries.
+- **`--output=...`**: Saves the explanation to `explanation.txt`.
 
 ---
 
 ## 🧪 Generate Unit Test Ideas for SQL Logic
 
+```bash
+python app.py --task=test --path=query.sql --output=test_ideas.txt
+```
 
 ### 🔍 What It Does:
 - **Task**: `test` — analyzes `query.sql` and generates unit test ideas to validate its logic.
 - **`--output=...`**: Saves the generated test ideas to `test_ideas.txt`.
+
+---
+
+## 📊 Benchmark SQL Query Performance
+
+```bash
+python app.py --task=benchmark --path=example.sql --dry-run
+```
+
+### 🔍 What It Does:
+- **Task**: `benchmark` — simulates query execution to measure performance metrics like:
+  - Execution time
+  - Index usage
+  - Query plan efficiency
+- **`--dry-run`**: Displays results in the terminal without altering the original file.
+
+---
+
+## 📈 Visualize Query Execution Plan
+
+```bash
+python app.py --task=visualize --path=query.sql --output=query_plan.png
+```
+
+### 🔍 What It Does:
+- **Task**: `visualize` — generates a graphical representation of the query execution plan.
+- **`--output=...`**: Saves the visualization as `query_plan.png`.
+
+---
+
+## 🚀 Convert Natural Language to SQL
+
+### Inline Natural Language Query
+
+```bash
+python app.py --task=nl_to_sql --path="list all patients diagnosed with diabetes last month" --sql_dialect="PostgreSQL" --schema_path="schema.json" --dry-run
+```
+
+### Natural Language Query from File
+
+```bash
+python app.py --task=nl_to_sql --path=nl_query.txt --sql_dialect="T-SQL" --schema_path="schema/HealthClaimsDW.json" --output=generated_query.sql
+```
+
+### 🔍 What It Does:
+- **Task**: `nl_to_sql` — converts plain language queries into SQL using the specified schema.
+- **`--sql_dialect=...`**: Specifies the SQL dialect (e.g., T-SQL, PostgreSQL).
+- **`--schema_path=...`**: Points to the schema for generating valid SQL.
 
 ---
 
@@ -90,7 +144,6 @@ python app.py --task=comment --path=query.sql --sanitize --output=query_commente
 - Stages the result for Git commit
 - **Note**: Not all tasks can be combined. For example, `audit` and `explain` cannot be used together as they serve different purposes.
 
-
 ---
 
 ## 🔧 Available Tasks
@@ -103,6 +156,9 @@ python app.py --task=comment --path=query.sql --sanitize --output=query_commente
 | `audit`    | Detect security/PII/PHI/HIPAA risks          |
 | `explain`  | Translate query logic into natural language  |
 | `test`     | Generate unit test ideas for SQL logic       |
+| `benchmark`| Simulate query execution and measure performance|
+| `visualize`| Generate query execution plan visualizations |
+| `nl_to_sql`| Convert natural language to SQL              |
 
 ---
 
@@ -127,3 +183,4 @@ project-root/
 
 See the [MIT License](./LICENSE) for usage terms.
 
+---
