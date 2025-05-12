@@ -173,7 +173,7 @@ The sql_learn_mode.py script provides an interactive platform for learning SQL c
 ```bash
 python learn/sql_learn_mode.py
 ```
-Optionally, you can ""Set as startup file"" an click Start/F5 to run the console app. This will start the AI Agent.
+Optionally, you can **Set as startup file** from within VS Professional and click Start/F5 to run the console app. This will start the AI Agent.
 
 ---
 
