@@ -32,7 +32,7 @@ from tasks.sql_test_generator import SQLTestGenerator
 from tasks.sql_performance_benchmark import SQLPerformanceBenchmark
 from tasks.sql_query_validator import SQLQueryValidator
 from tasks.natural_language_to_sql import NaturalLanguageToSQL
-from tasks.sql_data_masker import SQLDataMasker  # Import for Data Masking and Anonymization
+from tasks.sql_data_masker import SQLDataMasker
 
 # Add the project root directory to the Python path
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "."))
@@ -49,7 +49,7 @@ TASKS = {
     "benchmark": SQLPerformanceBenchmark,
     "validate": SQLQueryValidator,
     "nl_to_sql": NaturalLanguageToSQL,
-    "mask": SQLDataMasker,  # Added entry for the new Data Masking feature
+    "mask": SQLDataMasker,
 }
 
 
