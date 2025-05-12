@@ -219,3 +219,33 @@ data_masker.detect_sensitive_data:
   inputs: [sql_query]
   version: 1.0
   description: Detects sensitive data in SQL queries.
+
+# Dynamic SQL Detection Prompts
+dynamic_sql.detector:
+  inline: |
+    You are a database expert. Analyze the following SQL code and identify any dynamically
+    generated SQL patterns. Specifically, look for concatenation of strings, dynamic table
+    or column names, and the use of EXEC or sp_executesql. Provide a short report describing
+    the detected patterns.
+
+    SQL Code:
+    {sql_code}
+  used_by: utils.dynamic_sql_detector.DynamicSQLDetector
+  inputs: [sql_code]
+  version: 1.0
+  description: Detects dynamic SQL patterns in SQL code.
+
+dynamic_sql.risks_and_optimization:
+  inline: |
+    You are a database security and optimization expert. Analyze the following SQL code
+    for risks and optimization opportunities. Specifically:
+    1. Identify any SQL injection vulnerabilities.
+    2. Suggest safer alternatives (e.g., parameterized queries).
+    3. Recommend optimizations to improve performance.
+
+    SQL Code:
+    {sql_code}
+  used_by: utils.dynamic_sql_detector.DynamicSQLDetector
+  inputs: [sql_code]
+  version: 1.0
+  description: Analyzes risks and optimization opportunities in dynamic SQL code.

@@ -146,6 +146,21 @@ python app.py --task=benchmark --path=example.sql --dry-run
 python app.py --task=visualize --path=example.sql
 ```
 
+### 🔍 Dynamic SQL Detection
+
+Detect dynamic SQL patterns and analyze risks/optimizations:
+
+#### Analyze risks and optimizations - Detect patterns only:
+```bash
+python app.py --task=dynamic_sql --path="queries/sample_query.sql" --detect_only --dry-run
+```
+
+#### Process all SQL files in a directory recursively:
+
+```bash
+python app.py --task=dynamic_sql --path="queries/" --recursive
+```
+
 ---
 
 ## 🛠 Configuration

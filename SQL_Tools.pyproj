@@ -31,6 +31,7 @@
     <Content Include="core\config_loader.py" />
     <Compile Include="core\logger.py" />
     <Compile Include="core\sql_task_base.py" />
+    <Compile Include="utils\dynamic_sql_detector.py" />
     <Compile Include="tasks\natural_language_to_sql.py" />
     <Compile Include="tasks\sql_data_masker.py" />
     <Compile Include="tasks\sql_explainer.py" />

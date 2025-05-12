@@ -36,6 +36,7 @@ from tasks.sql_query_validator import SQLQueryValidator
 from tasks.natural_language_to_sql import NaturalLanguageToSQL
 from tasks.sql_data_masker import SQLDataMasker
 from tasks.sql_style_enforcer import SQLStyleEnforcer
+from utils.dynamic_sql_detector import DynamicSQLDetector
 
 # Add the project root directory to the Python path
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "."))
@@ -53,7 +54,8 @@ TASKS = {
     "validate": SQLQueryValidator,
     "nl_to_sql": NaturalLanguageToSQL,
     "mask": SQLDataMasker,
-    "style_enforce": SQLStyleEnforcer,  # Added entry for SQL Style Guide Enforcement
+    "style_enforce": SQLStyleEnforcer,  # SQL Style Guide Enforcement
+    "dynamic_sql": DynamicSQLDetector,  # Dynamic SQL Detection
 }
 
 
@@ -81,6 +83,13 @@ async def process_sql_file(filepath, task_class, backup=False, dry_run=False, sa
 
         task = task_class(schema_file=schema_path)
         result = await task.run(nl_query, sql_dialect=sql_dialect)
+    elif task_class == DynamicSQLDetector:
+        # Handle specific logic for Dynamic SQL Detection
+        task = task_class(ai_client, prompt_manager)
+        if kwargs.get("detect_only", False):
+            result = await task.detect_dynamic_sql(sql_code)
+        else:
+            result = await task.analyze_risks_and_optimization(sql_code)
     else:
         task = task_class()
         result = await task.run(sql_code)
@@ -125,6 +134,7 @@ async def main():
     parser.add_argument("--git", action="store_true", help="Stage modified files to Git")
     parser.add_argument("--sql_dialect", required=False, help="SQL dialect to use (e.g., T-SQL, PostgreSQL).")
     parser.add_argument("--schema_path", help="Path to the JSON schema file.", default="schema.json")  # Default to 'schema.json'
+    parser.add_argument("--detect_only", action="store_true", help="Only detect dynamic SQL patterns without analyzing risks or optimizations (specific to 'dynamic_sql' task).")
 
     args = parser.parse_args()
 
@@ -178,7 +188,8 @@ async def main():
                 args.output, 
                 args.git, 
                 schema_path=args.schema_path, 
-                sql_dialect=args.sql_dialect
+                sql_dialect=args.sql_dialect, 
+                detect_only=args.detect_only
             )
         elif os.path.isdir(args.path):
             sql_files = get_sql_files_in_directory(args.path, recursive=args.recursive)
@@ -195,7 +206,8 @@ async def main():
                     None, 
                     args.git, 
                     schema_path=args.schema_path, 
-                    sql_dialect=args.sql_dialect
+                    sql_dialect=args.sql_dialect, 
+                    detect_only=args.detect_only
                 )
     else:
         print("❌ Provided path does not exist.")
