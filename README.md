@@ -166,6 +166,7 @@ python app.py --task=dynamic_sql --path="queries/" --recursive
 ---
 
 ### 👩‍🏫 SQL Learning Mode (Interactive Tutorials)
+The sql_learn_mode.py script provides an interactive platform for learning SQL concepts through quizzes, practice, and conversational guidance. It leverages an AI client (BaseAIClient) for generating dynamic SQL content, such as quiz questions and feedback on queries.
 
 ### Run the Learning Mode directly:
 

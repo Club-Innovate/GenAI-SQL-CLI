@@ -5,7 +5,7 @@
     <ProjectGuid>87056297-41f6-450a-ada2-c4ef0f540a43</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>learn\sql_learn_mode.py</StartupFile>
+    <StartupFile>app.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
