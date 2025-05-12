@@ -252,17 +252,17 @@ This project is licensed under the [MIT License](./LICENSE).
 
 ---
 
-## 🤝 Contributing
+## 🤝 Contributing (Comming Soon)
 
-- Fork and open a PR
-- Follow modular design and SOLID principles
-- Ensure proper logging, error handling, and secure configuration
+- *Fork and open a PR*
+- *Follow modular design and SOLID principles*
+- *Ensure proper logging, error handling, and secure configuration*
 
 ---
 
 ## 🙌 Authors & Acknowledgments
 
 - Vision and engineering by **Hans Esquivel**
-- Powered by **Azure OpenAI**
+- Powered by **Python & Azure OpenAI**
 - Thanks to the SQL and ML community for insights and best practices
 ---
