@@ -26,6 +26,12 @@ sql_tools/
 │   ├── sql_explainer.py
 │   ├── sql_security_auditor.py
 │   ├── sql_test_generator.py
+│   ├── sql_performance_benchmark.py  # New: Added performance benchmarking and optimization
+│   ├── sql_data_masker.py           # New: Data masking and anonymization
+│   ├── sql_visualizer.py            # New: Visualization and insights
+│   ├── sql_error_corrector.py       # New: Error correction and debugging
+│   ├── sql_style_enforcer.py        # New: Style guide enforcement
+│   ├── natural_language_to_sql.py   # New: Natural language to SQL conversion
 ├── prompts/                    # Centralized prompt management
 │   ├── index.yaml              # YAML file defining all prompts and metadata
 │   ├── summarization/          # Summarization-related prompt templates
@@ -33,7 +39,8 @@ sql_tools/
 └── utils/
     ├── file_utils.py           # File I/O, backup, and directory handling
     ├── prompt_manager.py       # Centralized prompt loading and validation
-    └── sanitizer.py            # LLM output cleaner (markdown, GPT comments)
+    ├── sanitizer.py            # LLM output cleaner (markdown, GPT comments)
+    ├── dynamic_sql_detector.py # New: Utility for dynamic SQL detection
 ```
 
 ---
@@ -41,6 +48,7 @@ sql_tools/
 ## ✅ Features
 
 - ⚙️ Modular task engine (comment, analyze, refactor, audit, explain, test)
+- 🔍 Query Simulation and Validation
 - 📋 Centralized prompt management via `prompts/index.yaml`
 - ⚡ Asynchronous OpenAI integration using `httpx`
 - 🧼 Sanitized output with `--sanitize`
@@ -49,6 +57,15 @@ sql_tools/
 - 🔐 Backup and HIPAA-safe logging
 - 🔀 Git integration: auto-stage files with `--git`
 - 📤 Export to separate files using `--output`
+- 🌐 Support for multiple SQL dialects (e.g., T-SQL, PostgreSQL, Oracle)
+- 🚀 Natural Language to SQL Conversion
+- 🔐 Enhanced security audits with SQL injection and role misuse detection
+- 📊 Performance benchmarking and optimization
+- 🔧 Data masking and anonymization
+- 📈 Visualization and insights (e.g., query execution plans, schema diagrams)
+- 🎨 SQL Style Guide Enforcement
+- 🛠 Dynamic SQL Detection
+- 🧑‍🏫 SQL Education Mode (Interactive Tutorials)
 
 ---
 
@@ -82,6 +99,26 @@ python app.py --task=audit --path=query.sql --git
 ### 🧪 Generate SQL test cases
 ```bash
 python app.py --task=test --path=example.sql --dry-run
+```
+
+### 🚀 Natural Language to SQL Conversion (inline query)
+```bash
+python app.py --task=nl_to_sql --path="list all patients diagnosed with diabetes last month" --sql_dialect="PostgreSQL" --schema_path="schema/schema.json" --dry-run
+```
+
+### 🚀 Natural Language to SQL Conversion (query file)
+```bash
+python app.py --task=nl_to_sql --path=queries/nl_query.txt --sql_dialect="T-SQL" --schema_path="schema/HealthClaimsDW.json" --output=output/generated_query.sql
+```
+
+### 📊 Benchmark SQL query performance
+```bash
+python app.py --task=benchmark --path=example.sql --dry-run
+```
+
+### 📈 Visualize query execution plan
+```bash
+python app.py --task=visualize --path=example.sql
 ```
 
 ---
@@ -174,3 +211,4 @@ This project is licensed under the [MIT License](./LICENSE).
 - Vision and engineering by **Hans Esquivel**
 - Powered by **Azure OpenAI**
 - Thanks to the SQL and ML community for insights and best practices
+---
