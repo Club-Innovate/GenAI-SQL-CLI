@@ -191,3 +191,43 @@ python app.py --task=nl_to_sql --path="list all patients that were diagnosed wit
 ```bash
 python app.py --task=nl_to_sql --path="list all patients that were diagnosed with diabetes last month" --sql_dialect="PostgreSQL" --schema_path="schema/HealthClaimsDW.json" --dry-run
 ```
+
+---
+
+## 11. SQL Data Masker
+Masks sensitive data in SQL queries.
+
+### Mask sensitive data in a single file with a dry run:
+```bash
+python app.py --task=mask --path="queries/sample_query.sql" --dry-run
+```
+
+### Mask sensitive data in all SQL files in a directory recursively:
+```bash
+python app.py --task=mask --path="queries/" --recursive
+```
+
+### Mask sensitive data in a single file and save the output:
+```bash
+python app.py --task=mask --path="queries/sample_query.sql" --output="output/masked_query.sql"
+```
+
+---
+
+## 12. SQL Style Guide Enforcement
+Enforces SQL coding standards.
+
+### Enforce SQL style guide for a single file with a dry run:
+```bash
+python app.py --task=style_enforce --path="queries/sample_query.sql" --sql_dialect="PostgreSQL" --dry-run
+```
+
+### Enforce SQL style guide in all SQL files in a directory recursively:
+```bash
+python app.py --task=style_enforce --path="queries/" --recursive --sql_dialect="T-SQL"
+```
+
+### Enforce SQL style guide for a single file and save the output:
+```bash
+python app.py --task=style_enforce --path="queries/sample_query.sql" --sql_dialect="PostgreSQL" --output="output/styled_query.sql"
+```

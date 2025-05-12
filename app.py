@@ -21,6 +21,8 @@ from utils.file_utils import (
 )
 from core.config_loader import Config
 from utils.sanitizer import clean_output
+from utils.prompt_manager import PromptManager
+from core.base_ai_client import AIClient
 
 # Task imports
 from tasks.sql_commenter import SQLCommenter
@@ -33,6 +35,7 @@ from tasks.sql_performance_benchmark import SQLPerformanceBenchmark
 from tasks.sql_query_validator import SQLQueryValidator
 from tasks.natural_language_to_sql import NaturalLanguageToSQL
 from tasks.sql_data_masker import SQLDataMasker
+from tasks.sql_style_enforcer import SQLStyleEnforcer
 
 # Add the project root directory to the Python path
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "."))
@@ -50,6 +53,7 @@ TASKS = {
     "validate": SQLQueryValidator,
     "nl_to_sql": NaturalLanguageToSQL,
     "mask": SQLDataMasker,
+    "style_enforce": SQLStyleEnforcer,  # Added entry for SQL Style Guide Enforcement
 }
 
 
@@ -57,10 +61,18 @@ async def process_sql_file(filepath, task_class, backup=False, dry_run=False, sa
     print(f"🔍 Processing: {filepath}")
     sql_code = read_sql_file(filepath)
 
+    # Initialize AI client and prompt manager (used by AI-driven tasks)
+    ai_client = AIClient()
+    prompt_manager = PromptManager("prompts/index.yaml")
+
     # Special logic for SQLDataMasker
     if task_class == SQLDataMasker:
         task = task_class()
         result = task.mask_sensitive_data(sql_code)
+    elif task_class == SQLStyleEnforcer:
+        # Handle specific logic for SQL Style Enforcement
+        task = task_class(ai_client, prompt_manager)
+        result = await task.enforce_style(sql_code, kwargs.get("sql_dialect", "generic"))
     elif task_class == NaturalLanguageToSQL:
         # Handle specific logic for NaturalLanguageToSQL
         nl_query = sql_code  # Treat the file content as the natural language query

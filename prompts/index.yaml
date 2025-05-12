@@ -161,3 +161,61 @@ nl_to_sql.convert:
   inputs: [nl_query, sql_dialect, schema]
   version: 1.2
   description: Converts natural language queries to SQL queries using a predefined schema JSON.
+
+# SQL Style Enforcer Prompts
+style_enforcer.enforce_style:
+  inline: |
+    You are an expert in SQL coding standards. Below is a SQL query. Please:
+    1. Enforce naming conventions for tables, columns, and indexes (e.g., snake_case for table and column names, idx_ prefix for indexes).
+    2. Format the SQL code following best practices:
+       - Keywords in uppercase.
+       - Indentation with 4 spaces.
+       - Line length not exceeding 80 characters.
+    3. Return the updated SQL code with no additional comments or explanations.
+
+    SQL Dialect: {sql_dialect}
+    SQL Code:
+    {sql_code}
+  used_by: tasks.sql_style_enforcer.SQLStyleEnforcer
+  inputs:
+    - sql_code
+    - sql_dialect
+  version: 1.0
+  description: Enforces SQL coding standards dynamically using AI.
+
+# SQL Data Masking Prompts
+data_masker.mask_sensitive_data:
+  inline: |
+    You are a data anonymization expert. Detect and mask sensitive information in the following SQL query.
+    Mask the following types of sensitive data:
+    1. Email addresses (e.g., replace with [masked-email]).
+    2. Phone numbers (e.g., replace with [masked-phone]).
+    3. Credit card numbers (e.g., replace with [masked-credit-card]).
+    4. Social Security Numbers (e.g., replace with [masked-ssn]).
+
+    Only return the updated SQL query with no additional comments or explanations.
+
+    SQL Query:
+    {sql_query}
+  used_by: tasks.sql_data_masker.SQLDataMasker
+  inputs: [sql_query]
+  version: 1.0
+  description: Masks sensitive data in SQL queries.
+
+data_masker.detect_sensitive_data:
+  inline: |
+    You are a data privacy expert. Analyze the following SQL query and detect any sensitive data it contains.
+    Identify the following types of sensitive data:
+    1. Email addresses.
+    2. Phone numbers.
+    3. Credit card numbers.
+    4. Social Security Numbers.
+
+    Provide a list of detected sensitive data along with their types.
+
+    SQL Query:
+    {sql_query}
+  used_by: tasks.sql_data_masker.SQLDataMasker
+  inputs: [sql_query]
+  version: 1.0
+  description: Detects sensitive data in SQL queries.

@@ -163,6 +163,20 @@ python app.py --task=mask --path=example.sql --output=masked_example.sql
 
 ---
 
+## 🛠️ Enforce SQL Style Guide
+
+```bash
+python app.py --task=style_enforce --path=example.sql --sql_dialect=PostgreSQL --output=styled_example.sql
+```
+
+### 🧑‍🏫 What It Does:
+- **Task**: `style_enforce` — Enforces SQL coding standards dynamically using AI.
+- **`--sql_dialect=...`**: Specifies the SQL dialect (e.g., PostgreSQL, T-SQL).
+- **`--output=...`**: Writes the styled SQL to a new file.
+- **`--dry-run`**: Displays the AI-styled SQL without saving the changes.
+
+---
+
 ## 🔧 Available Tasks
 
 | Task       | Description                                  |
@@ -177,6 +191,7 @@ python app.py --task=mask --path=example.sql --output=masked_example.sql
 | `visualize`| Generate query execution plan visualizations |
 | `nl_to_sql`| Convert natural language to SQL              |
 | `mask`     | Mask sensitive data in SQL queries           |
+| `style_enforce`| Enforce SQL coding standards             |
 
 ---
 

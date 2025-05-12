@@ -39,12 +39,14 @@
     <Compile Include="tasks\sql_query_validator.py" />
     <Compile Include="tasks\sql_refactorer.py" />
     <Compile Include="tasks\sql_security_auditor.py" />
+    <Compile Include="tasks\sql_style_enforcer.py" />
     <Compile Include="tasks\sql_test_generator.py" />
     <Compile Include="tests\test_natural_language_to_sql.py" />
     <Compile Include="tests\test_sql_data_masker.py" />
     <Compile Include="tests\test_sql_performance_benchmark.py" />
     <Compile Include="tests\test_sql_query_validator.py" />
     <Compile Include="tests\test_sql_security_auditor.py" />
+    <Compile Include="tests\test_sql_style_enforcer.py" />
     <Compile Include="utils\file_utils.py" />
     <Compile Include="utils\prompt_manager.py" />
     <Compile Include="utils\sanitizer.py" />

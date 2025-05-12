@@ -86,6 +86,16 @@ python app.py --task=mask --path=example.sql --output=masked_example.sql
   - Social Security Numbers (SSNs).
 - **`--output=...`**: Writes the masked SQL to a new file.
 
+### 🔧 Enforce SQL Style Guide
+```bash
+python app.py --task=style_enforce --path=example.sql --sql_dialect=PostgreSQL --output=styled_example.sql
+```
+
+### What It Does:
+- **Task**: `style_enforce` — Enforces SQL coding standards dynamically using AI.
+- **`--sql_dialect=...`**: Specifies the SQL dialect (e.g., PostgreSQL, T-SQL).
+- **`--output=...`**: Writes the styled SQL to a new file.
+
 ### 🔧 Comment a SQL file
 ```bash
 python app.py --task=comment --path=example.sql
