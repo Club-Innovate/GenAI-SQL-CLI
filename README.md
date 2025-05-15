@@ -255,7 +255,7 @@ This project is licensed under the [MIT License](./LICENSE).
 ## 🤝 Contributing (Comming Soon)
 
 - *Fork and open a PR*
-- *Follow modular design and SOLID principles*
+- *Follow modular design and solid principles*
 - *Ensure proper logging, error handling, and secure configuration*
 
 ---
