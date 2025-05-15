@@ -10,7 +10,7 @@
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>SQL_Tools</Name>
+    <Name>SQL_CLI_Tools</Name>
     <RootNamespace>SQLCommenter</RootNamespace>
     <SuppressEnvironmentCreationPrompt>True</SuppressEnvironmentCreationPrompt>
     <TestFramework>Pytest</TestFramework>
@@ -27,7 +27,7 @@
     <Compile Include="app.py" />
     <Compile Include="core\base_ai_client.py" />
     <Content Include="cli\sample_cli_commands.md" />
-    <Content Include="cli_usage_guide.md" />
+    <Content Include="sql_cli_usage_guide.md" />
     <Content Include="core\config_loader.py" />
     <Compile Include="core\logger.py" />
     <Compile Include="core\sql_task_base.py" />
@@ -60,7 +60,7 @@
     <Content Include="use_cases_and_review.md" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="GenAI SQL Doc.docx" />
+    <Content Include="GenAI SQL CLI Doc.docx" />
     <Content Include="LICENSE" />
     <Content Include="prompts\index.yaml" />
     <Content Include="README.md" />
