@@ -265,4 +265,12 @@ This project is licensed under the [MIT License](./LICENSE).
 - Vision and engineering by **Hans Esquivel**
 - Powered by **Python & Azure OpenAI**
 - Thanks to the SQL and ML community for insights and best practices
+
 ---
+
+## Contact
+
+Please open an [issue](https://github.com/club-innovate/genai-sql-cli/issues) or start a [discussion](https://github.com/club-innovate/genai-sql-cli/discussions) if you want to get in touch.
+
+---
+
