@@ -1,54 +1,54 @@
-# 🧪 GenAI-SQL CLI Usage Guide
+# GenAI-SQL CLI Usage Guide
 
 This guide provides examples and explanations for using the `GenAI-SQL` CLI (`app.py`) with various task and execution options.
 
 ---
 
-## 🧼 Clean and Save to a New File
+## Clean and Save to a New File
 
 ```bash
 python app.py --task=comment --path=example.sql --sanitize --output=cleaned_example.sql
 ```
 
-### 🔍 What It Does:
+### What It Does:
 - **Task**: `comment` — adds header and inline documentation to `example.sql`.
 - **`--sanitize`**: Removes extra GPT explanations or markdown.
 - **`--output=...`**: Writes the updated SQL to `cleaned_example.sql` instead of overwriting the original file.
 
 ---
 
-## 🔍 Preview Refactored Query (No File Overwrite)
+## Preview Refactored Query (No File Overwrite)
 
 ```bash
 python app.py --task=refactor --path=query.sql --dry-run
 ```
 
-### 🔍 What It Does:
+### What It Does:
 - **Task**: `refactor` — rewrites legacy SQL to modern best practices (CTEs, clean formatting).
 - **`--dry-run`**: Only shows the result in the terminal, without modifying `query.sql`.
 
 ---
 
-## 🗃️ Process All `.sql` Files in a Folder (With Backups)
+## Process All `.sql` Files in a Folder (With Backups)
 
 ```bash
 python app.py --task=analyze --path=./sql_scripts --recursive --backup
 ```
 
-### 🔍 What It Does:
+### What It Does:
 - **Task**: `analyze` — finds inefficiencies and suggests performance improvements.
 - **`--recursive`**: Processes all `.sql` files in the folder and subfolders.
 - **`--backup`**: Creates `.bak` files before overwriting each script.
 
 ---
 
-## 🔐 Run Security Audit and Stage for Git
+## Run Security Audit and Stage for Git
 
 ```bash
 python app.py --task=audit --path=query.sql --git
 ```
 
-### 🔍 What It Does:
+### What It Does:
 - **Task**: `audit` — scans `query.sql` for:
   - SQL injection risk
   - PHI/PII exposure
@@ -58,37 +58,37 @@ python app.py --task=audit --path=query.sql --git
 
 ---
 
-## 🗣️ Explain Query Logic in Natural Language
+## Explain Query Logic in Natural Language
 
 ```bash
 python app.py --task=explain --path=query.sql --output=explanation.txt
 ```
 
-### 🔍 What It Does:
+### What It Does:
 - **Task**: `explain` — translates the logic of `query.sql` into a natural language explanation, making it easier to understand complex queries.
 - **`--output=...`**: Saves the explanation to `explanation.txt`.
 
 ---
 
-## 🧪 Generate Unit Test Ideas for SQL Logic
+## Generate Unit Test Ideas for SQL Logic
 
 ```bash
 python app.py --task=test --path=query.sql --output=test_ideas.txt
 ```
 
-### 🔍 What It Does:
+### What It Does:
 - **Task**: `test` — analyzes `query.sql` and generates unit test ideas to validate its logic.
 - **`--output=...`**: Saves the generated test ideas to `test_ideas.txt`.
 
 ---
 
-## 📊 Benchmark SQL Query Performance
+## Benchmark SQL Query Performance
 
 ```bash
 python app.py --task=benchmark --path=example.sql --dry-run
 ```
 
-### 🔍 What It Does:
+### What It Does:
 - **Task**: `benchmark` — simulates query execution to measure performance metrics like:
   - Execution time
   - Index usage
@@ -97,19 +97,19 @@ python app.py --task=benchmark --path=example.sql --dry-run
 
 ---
 
-## 📈 Visualize Query Execution Plan
+## Visualize Query Execution Plan
 
 ```bash
 python app.py --task=visualize --path=query.sql --output=query_plan.png
 ```
 
-### 🔍 What It Does:
+### What It Does:
 - **Task**: `visualize` — generates a graphical representation of the query execution plan.
 - **`--output=...`**: Saves the visualization as `query_plan.png`.
 
 ---
 
-## 🚀 Convert Natural Language to SQL
+## Convert Natural Language to SQL
 
 ### Inline Natural Language Query
 
@@ -123,14 +123,14 @@ python app.py --task=nl_to_sql --path="list all patients diagnosed with diabetes
 python app.py --task=nl_to_sql --path=nl_query.txt --sql_dialect="T-SQL" --schema_path="schema/HealthClaimsDW.json" --output=generated_query.sql
 ```
 
-### 🔍 What It Does:
+### What It Does:
 - **Task**: `nl_to_sql` — converts plain language queries into SQL using the specified schema.
 - **`--sql_dialect=...`**: Specifies the SQL dialect (e.g., T-SQL, PostgreSQL).
 - **`--schema_path=...`**: Points to the schema for generating valid SQL.
 
 ---
 
-## 🧠 Tip: Combine Flags
+## Tip: Combine Flags
 
 You can combine options for more control:
 
@@ -146,13 +146,13 @@ python app.py --task=comment --path=query.sql --sanitize --output=query_commente
 
 ---
 
-## 🔒 Mask Sensitive Data in SQL Queries
+## Mask Sensitive Data in SQL Queries
 
 ```bash
 python app.py --task=mask --path=example.sql --output=masked_example.sql
 ```
 
-### 🔍 What It Does:
+### What It Does:
 - **Task**: `mask` — Automatically identifies and masks sensitive data such as:
   - Email addresses.
   - Phone numbers.
@@ -163,13 +163,13 @@ python app.py --task=mask --path=example.sql --output=masked_example.sql
 
 ---
 
-## 🛠️ Enforce SQL Style Guide
+## Enforce SQL Style Guide
 
 ```bash
 python app.py --task=style_enforce --path=example.sql --sql_dialect=PostgreSQL --output=styled_example.sql
 ```
 
-### 🧑‍🏫 What It Does:
+### What It Does:
 - **Task**: `style_enforce` — Enforces SQL coding standards dynamically using AI.
 - **`--sql_dialect=...`**: Specifies the SQL dialect (e.g., PostgreSQL, T-SQL).
 - **`--output=...`**: Writes the styled SQL to a new file.
@@ -177,7 +177,7 @@ python app.py --task=style_enforce --path=example.sql --sql_dialect=PostgreSQL -
 
 ---
 
-## 🔧 Available Tasks
+## Available Tasks
 
 | Task       | Description                                  |
 |------------|----------------------------------------------|
@@ -195,7 +195,7 @@ python app.py --task=style_enforce --path=example.sql --sql_dialect=PostgreSQL -
 
 ---
 
-## 📂 Example Directory Setup
+## Example Directory Setup
 
 ```
 project-root/
@@ -212,7 +212,7 @@ project-root/
 
 ---
 
-## 📄 License
+## License
 
 See the [MIT License](./LICENSE) for usage terms.
 
