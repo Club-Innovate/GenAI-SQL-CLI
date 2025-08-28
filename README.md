@@ -1,4 +1,4 @@
-# 🧠 GenAI SQL Tools Suite
+# GenAI SQL Tools Suite
 
 A production-ready suite of modular, asynchronous tools for analyzing, refactoring, commenting, and auditing SQL code using Azure OpenAI (GPT-4o).
 
@@ -6,7 +6,7 @@ A production-ready suite of modular, asynchronous tools for analyzing, refactori
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 sql_tools/
@@ -48,39 +48,39 @@ sql_tools/
 
 ---
 
-## ✅ Features
+## Features
 
-- 🧹 Data Masking and Anonymization - Automatically masks sensitive data such as emails, phone numbers, credit card numbers, and SSNs.
-- ⚙️ Modular task engine (comment, analyze, refactor, audit, explain, test)
-- 🔍 Query Simulation and Validation
-- 📋 Centralized prompt management via `prompts/index.yaml`
-- ⚡ Asynchronous OpenAI integration using `httpx`
-- 🧼 Sanitized output with `--sanitize`
-- 🔁 Directory recursion and batching with `--recursive`
-- 🧪 Preview results before modifying files with `--dry-run`
-- 🔐 Backup and HIPAA-safe logging
-- 🔀 Git integration: auto-stage files with `--git`
-- 📤 Export to separate files using `--output`
-- 🌐 Support for multiple SQL dialects using nl_to_sql task (e.g., T-SQL, PostgreSQL, Oracle)
-- 🚀 Natural Language to SQL Conversion
-- 🔐 Enhanced security audits with SQL injection and role misuse detection
-- 📊 Performance benchmarking and optimization
-- 🔧 Data masking and anonymization
-- 🎨 SQL Style Guide Enforcement
-- 🛠 Dynamic SQL Detection
-- 🧑‍🏫 SQL Education Mode (Interactive Tutorials)
+- Data Masking and Anonymization - Automatically masks sensitive data such as emails, phone numbers, credit card numbers, and SSNs.
+- Modular task engine (comment, analyze, refactor, audit, explain, test)
+- Query Simulation and Validation
+- Centralized prompt management via `prompts/index.yaml`
+- Asynchronous OpenAI integration using `httpx`
+- Sanitized output with `--sanitize`
+- Directory recursion and batching with `--recursive`
+- Preview results before modifying files with `--dry-run`
+- Backup and HIPAA-safe logging
+- Git integration: auto-stage files with `--git`
+- Export to separate files using `--output`
+- Support for multiple SQL dialects using nl_to_sql task (e.g., T-SQL, PostgreSQL, Oracle)
+- Natural Language to SQL Conversion
+- Enhanced security audits with SQL injection and role misuse detection
+- Performance benchmarking and optimization
+- Data masking and anonymization
+- SQL Style Guide Enforcement
+- Dynamic SQL Detection
+- SQL Education Mode (Interactive Tutorials)
 
 ---
 
-## 🧪 CLI Usage
+## CLI Usage
 
-## 🔒 Mask Sensitive Data in SQL Queries
+## Mask Sensitive Data in SQL Queries
 
 ```bash
 python app.py --task=mask --path=example.sql --output=masked_example.sql
 ```
 
-### 🔍 What It Does:
+### What It Does:
 - **Task**: `mask` — Automatically identifies and masks sensitive data such as:
   - Email addresses.
   - Phone numbers.
@@ -88,7 +88,7 @@ python app.py --task=mask --path=example.sql --output=masked_example.sql
   - Social Security Numbers (SSNs).
 - **`--output=...`**: Writes the masked SQL to a new file.
 
-### 🔧 Enforce SQL Style Guide
+### Enforce SQL Style Guide
 ```bash
 python app.py --task=style_enforce --path=example.sql --sql_dialect=PostgreSQL --output=styled_example.sql
 ```
@@ -98,57 +98,57 @@ python app.py --task=style_enforce --path=example.sql --sql_dialect=PostgreSQL -
 - **`--sql_dialect=...`**: Specifies the SQL dialect (e.g., PostgreSQL, T-SQL).
 - **`--output=...`**: Writes the styled SQL to a new file.
 
-### 🔧 Comment a SQL file
+### Comment a SQL file
 ```bash
 python app.py --task=comment --path=example.sql
 ```
 
-### 🧼 Clean and save to new file
+### Clean and save to new file
 ```bash
 python app.py --task=comment --path=example.sql --sanitize --output=cleaned_example.sql
 ```
 
-### 🔍 Preview refactored query (no overwrite)
+### Preview refactored query (no overwrite)
 ```bash
 python app.py --task=refactor --path=query.sql --dry-run
 ```
 
-### 🗃️ Process all .sql files in folder (with backups)
+### Process all .sql files in folder (with backups)
 ```bash
 python app.py --task=analyze --path=./sql_scripts --recursive --backup
 ```
 
-### 🔐 Run security audit and stage for Git
+### Run security audit and stage for Git
 ```bash
 python app.py --task=audit --path=query.sql --git
 ```
 
-### 🧪 Generate SQL test cases
+### Generate SQL test cases
 ```bash
 python app.py --task=test --path=example.sql --dry-run
 ```
 
-### 🚀 Natural Language to SQL Conversion (inline query)
+### Natural Language to SQL Conversion (inline query)
 ```bash
 python app.py --task=nl_to_sql --path="list all patients diagnosed with diabetes last month" --sql_dialect="PostgreSQL" --schema_path="schema/schema.json" --dry-run
 ```
 
-### 🚀 Natural Language to SQL Conversion (query file)
+### Natural Language to SQL Conversion (query file)
 ```bash
 python app.py --task=nl_to_sql --path=queries/nl_query.txt --sql_dialect="T-SQL" --schema_path="schema/HealthClaimsDW.json" --output=output/generated_query.sql
 ```
 
-### 📊 Benchmark SQL query performance
+### Benchmark SQL query performance
 ```bash
 python app.py --task=benchmark --path=example.sql --dry-run
 ```
 
-### 📈 Visualize query execution plan
+### Visualize query execution plan
 ```bash
 python app.py --task=visualize --path=example.sql
 ```
 
-### 🔍 Dynamic SQL Detection
+### Dynamic SQL Detection
 
 Detect dynamic SQL patterns and analyze risks/optimizations:
 
@@ -165,7 +165,7 @@ python app.py --task=dynamic_sql --path="queries/" --recursive
 
 ---
 
-### 👩‍🏫 SQL Learning Mode (Interactive Tutorials)
+### SQL Learning Mode (Interactive Tutorials)
 The sql_learn_mode.py script provides an interactive platform for learning SQL concepts through quizzes, practice, and conversational guidance. It leverages an AI client (BaseAIClient) for generating dynamic SQL content, such as quiz questions and feedback on queries.
 
 ### Run the Learning Mode directly:
@@ -177,7 +177,7 @@ Optionally, you can **Set as startup file** from within VS Professional and clic
 
 ---
 
-## 🛠 Configuration
+## Configuration
 
 Edit `core/config_loader.py` to match your Azure OpenAI deployment:
 
@@ -190,7 +190,7 @@ AOPAI_DEPLOY_MODEL = "gpt-4o-dev"
 
 ---
 
-## 📦 Install Requirements
+## Install Requirements
 
 ```bash
 pip install -r requirements.txt
@@ -198,7 +198,7 @@ pip install -r requirements.txt
 
 ---
 
-## 📋 Centralized Prompt Management
+## Centralized Prompt Management
 
 All prompts are defined in a single `index.yaml` file, which maps specific tasks to their associated prompt templates. This design enables:
 
@@ -208,7 +208,7 @@ All prompts are defined in a single `index.yaml` file, which maps specific tasks
 
 Each task class dynamically loads its associated prompt using metadata from this file.
 
-### 🧾 Example `index.yaml` Entry
+### Example `index.yaml` Entry
 
 ```yaml
 commenter.add_comments:
@@ -237,7 +237,7 @@ commenter.add_comments:
 
 ---
 
-## 🔐 Security & Compliance
+## Security & Compliance
 
 - Logs are stored per task under the `logs/` directory
 - Safe use of T-SQL comments (`--`, `/* ... */`)
@@ -246,13 +246,13 @@ commenter.add_comments:
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the [MIT License](./LICENSE).
 
 ---
 
-## 🤝 Contributing (Comming Soon)
+## Contributing (Coming Soon)
 
 - *Fork and open a PR*
 - *Follow modular design and solid principles*
@@ -260,7 +260,7 @@ This project is licensed under the [MIT License](./LICENSE).
 
 ---
 
-## 🙌 Authors & Acknowledgments
+## Authors & Acknowledgments
 
 - Vision and engineering by **Hans Esquivel**
 - Powered by **Python & Azure OpenAI**
